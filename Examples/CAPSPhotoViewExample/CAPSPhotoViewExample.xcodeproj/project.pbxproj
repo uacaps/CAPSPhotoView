@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9EB2A02918FC582800D202E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A02818FC582800D202E9 /* Foundation.framework */; };
+		9EB2A02B18FC582800D202E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A02A18FC582800D202E9 /* CoreGraphics.framework */; };
+		9EB2A02D18FC582800D202E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A02C18FC582800D202E9 /* UIKit.framework */; };
+		9EB2A03318FC582800D202E9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A03118FC582800D202E9 /* InfoPlist.strings */; };
+		9EB2A03518FC582800D202E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A03418FC582800D202E9 /* main.m */; };
+		9EB2A03918FC582800D202E9 /* CAPSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A03818FC582800D202E9 /* CAPSAppDelegate.m */; };
+		9EB2A03C18FC582800D202E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A03A18FC582800D202E9 /* Main.storyboard */; };
+		9EB2A03F18FC582800D202E9 /* CAPSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A03E18FC582800D202E9 /* CAPSViewController.m */; };
+		9EB2A04118FC582800D202E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A04018FC582800D202E9 /* Images.xcassets */; };
+		9EB2A04818FC582800D202E9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A04718FC582800D202E9 /* XCTest.framework */; };
+		9EB2A04918FC582800D202E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A02818FC582800D202E9 /* Foundation.framework */; };
+		9EB2A04A18FC582800D202E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A02C18FC582800D202E9 /* UIKit.framework */; };
+		9EB2A05218FC582800D202E9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A05018FC582800D202E9 /* InfoPlist.strings */; };
+		9EB2A05418FC582800D202E9 /* CAPSPhotoViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A05318FC582800D202E9 /* CAPSPhotoViewExampleTests.m */; };
+		9EB2A06618FC58A200D202E9 /* CAPSPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A06418FC58A200D202E9 /* CAPSPhotoView.m */; };
+		9EB2A06718FC58A200D202E9 /* CAPSPhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A06518FC58A200D202E9 /* CAPSPhotoView.xib */; };
+		9EB2A06B18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A06A18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9EB2A04B18FC582800D202E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9EB2A01D18FC582800D202E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9EB2A02418FC582800D202E9;
+			remoteInfo = CAPSPhotoViewExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9EB2A02518FC582800D202E9 /* CAPSPhotoViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAPSPhotoViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EB2A02818FC582800D202E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9EB2A02A18FC582800D202E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9EB2A02C18FC582800D202E9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9EB2A03018FC582800D202E9 /* CAPSPhotoViewExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CAPSPhotoViewExample-Info.plist"; sourceTree = "<group>"; };
+		9EB2A03218FC582800D202E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9EB2A03418FC582800D202E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9EB2A03618FC582800D202E9 /* CAPSPhotoViewExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAPSPhotoViewExample-Prefix.pch"; sourceTree = "<group>"; };
+		9EB2A03718FC582800D202E9 /* CAPSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPSAppDelegate.h; sourceTree = "<group>"; };
+		9EB2A03818FC582800D202E9 /* CAPSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPSAppDelegate.m; sourceTree = "<group>"; };
+		9EB2A03B18FC582800D202E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9EB2A03D18FC582800D202E9 /* CAPSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPSViewController.h; sourceTree = "<group>"; };
+		9EB2A03E18FC582800D202E9 /* CAPSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPSViewController.m; sourceTree = "<group>"; };
+		9EB2A04018FC582800D202E9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9EB2A04618FC582800D202E9 /* CAPSPhotoViewExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAPSPhotoViewExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EB2A04718FC582800D202E9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9EB2A04F18FC582800D202E9 /* CAPSPhotoViewExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CAPSPhotoViewExampleTests-Info.plist"; sourceTree = "<group>"; };
+		9EB2A05118FC582800D202E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9EB2A05318FC582800D202E9 /* CAPSPhotoViewExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPSPhotoViewExampleTests.m; sourceTree = "<group>"; };
+		9EB2A06318FC58A200D202E9 /* CAPSPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAPSPhotoView.h; path = ../../../CAPSPhotoView/CAPSPhotoView.h; sourceTree = "<group>"; };
+		9EB2A06418FC58A200D202E9 /* CAPSPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAPSPhotoView.m; path = ../../../CAPSPhotoView/CAPSPhotoView.m; sourceTree = "<group>"; };
+		9EB2A06518FC58A200D202E9 /* CAPSPhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CAPSPhotoView.xib; path = ../../../CAPSPhotoView/CAPSPhotoView.xib; sourceTree = "<group>"; };
+		9EB2A06A18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9EB2A02218FC582800D202E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A02B18FC582800D202E9 /* CoreGraphics.framework in Frameworks */,
+				9EB2A02D18FC582800D202E9 /* UIKit.framework in Frameworks */,
+				9EB2A02918FC582800D202E9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EB2A04318FC582800D202E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A04818FC582800D202E9 /* XCTest.framework in Frameworks */,
+				9EB2A04A18FC582800D202E9 /* UIKit.framework in Frameworks */,
+				9EB2A04918FC582800D202E9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9EB2A01C18FC582800D202E9 = {
+			isa = PBXGroup;
+			children = (
+				9EB2A02E18FC582800D202E9 /* CAPSPhotoViewExample */,
+				9EB2A04D18FC582800D202E9 /* CAPSPhotoViewExampleTests */,
+				9EB2A02718FC582800D202E9 /* Frameworks */,
+				9EB2A02618FC582800D202E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9EB2A02618FC582800D202E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A02518FC582800D202E9 /* CAPSPhotoViewExample.app */,
+				9EB2A04618FC582800D202E9 /* CAPSPhotoViewExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9EB2A02718FC582800D202E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A02818FC582800D202E9 /* Foundation.framework */,
+				9EB2A02A18FC582800D202E9 /* CoreGraphics.framework */,
+				9EB2A02C18FC582800D202E9 /* UIKit.framework */,
+				9EB2A04718FC582800D202E9 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9EB2A02E18FC582800D202E9 /* CAPSPhotoViewExample */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A05D18FC582E00D202E9 /* CAPSPhotoView */,
+				9EB2A03718FC582800D202E9 /* CAPSAppDelegate.h */,
+				9EB2A03818FC582800D202E9 /* CAPSAppDelegate.m */,
+				9EB2A03A18FC582800D202E9 /* Main.storyboard */,
+				9EB2A03D18FC582800D202E9 /* CAPSViewController.h */,
+				9EB2A03E18FC582800D202E9 /* CAPSViewController.m */,
+				9EB2A04018FC582800D202E9 /* Images.xcassets */,
+				9EB2A02F18FC582800D202E9 /* Supporting Files */,
+			);
+			path = CAPSPhotoViewExample;
+			sourceTree = "<group>";
+		};
+		9EB2A02F18FC582800D202E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A06A18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg */,
+				9EB2A03018FC582800D202E9 /* CAPSPhotoViewExample-Info.plist */,
+				9EB2A03118FC582800D202E9 /* InfoPlist.strings */,
+				9EB2A03418FC582800D202E9 /* main.m */,
+				9EB2A03618FC582800D202E9 /* CAPSPhotoViewExample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9EB2A04D18FC582800D202E9 /* CAPSPhotoViewExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A05318FC582800D202E9 /* CAPSPhotoViewExampleTests.m */,
+				9EB2A04E18FC582800D202E9 /* Supporting Files */,
+			);
+			path = CAPSPhotoViewExampleTests;
+			sourceTree = "<group>";
+		};
+		9EB2A04E18FC582800D202E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A04F18FC582800D202E9 /* CAPSPhotoViewExampleTests-Info.plist */,
+				9EB2A05018FC582800D202E9 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9EB2A05D18FC582E00D202E9 /* CAPSPhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A06318FC58A200D202E9 /* CAPSPhotoView.h */,
+				9EB2A06418FC58A200D202E9 /* CAPSPhotoView.m */,
+				9EB2A06518FC58A200D202E9 /* CAPSPhotoView.xib */,
+			);
+			name = CAPSPhotoView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9EB2A02418FC582800D202E9 /* CAPSPhotoViewExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9EB2A05718FC582800D202E9 /* Build configuration list for PBXNativeTarget "CAPSPhotoViewExample" */;
+			buildPhases = (
+				9EB2A02118FC582800D202E9 /* Sources */,
+				9EB2A02218FC582800D202E9 /* Frameworks */,
+				9EB2A02318FC582800D202E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CAPSPhotoViewExample;
+			productName = CAPSPhotoViewExample;
+			productReference = 9EB2A02518FC582800D202E9 /* CAPSPhotoViewExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9EB2A04518FC582800D202E9 /* CAPSPhotoViewExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9EB2A05A18FC582800D202E9 /* Build configuration list for PBXNativeTarget "CAPSPhotoViewExampleTests" */;
+			buildPhases = (
+				9EB2A04218FC582800D202E9 /* Sources */,
+				9EB2A04318FC582800D202E9 /* Frameworks */,
+				9EB2A04418FC582800D202E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9EB2A04C18FC582800D202E9 /* PBXTargetDependency */,
+			);
+			name = CAPSPhotoViewExampleTests;
+			productName = CAPSPhotoViewExampleTests;
+			productReference = 9EB2A04618FC582800D202E9 /* CAPSPhotoViewExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9EB2A01D18FC582800D202E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CAPS;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = CAPS;
+				TargetAttributes = {
+					9EB2A04518FC582800D202E9 = {
+						TestTargetID = 9EB2A02418FC582800D202E9;
+					};
+				};
+			};
+			buildConfigurationList = 9EB2A02018FC582800D202E9 /* Build configuration list for PBXProject "CAPSPhotoViewExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9EB2A01C18FC582800D202E9;
+			productRefGroup = 9EB2A02618FC582800D202E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9EB2A02418FC582800D202E9 /* CAPSPhotoViewExample */,
+				9EB2A04518FC582800D202E9 /* CAPSPhotoViewExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9EB2A02318FC582800D202E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A06B18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg in Resources */,
+				9EB2A04118FC582800D202E9 /* Images.xcassets in Resources */,
+				9EB2A03318FC582800D202E9 /* InfoPlist.strings in Resources */,
+				9EB2A03C18FC582800D202E9 /* Main.storyboard in Resources */,
+				9EB2A06718FC58A200D202E9 /* CAPSPhotoView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EB2A04418FC582800D202E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A05218FC582800D202E9 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9EB2A02118FC582800D202E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A03F18FC582800D202E9 /* CAPSViewController.m in Sources */,
+				9EB2A03518FC582800D202E9 /* main.m in Sources */,
+				9EB2A03918FC582800D202E9 /* CAPSAppDelegate.m in Sources */,
+				9EB2A06618FC58A200D202E9 /* CAPSPhotoView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EB2A04218FC582800D202E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A05418FC582800D202E9 /* CAPSPhotoViewExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9EB2A04C18FC582800D202E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9EB2A02418FC582800D202E9 /* CAPSPhotoViewExample */;
+			targetProxy = 9EB2A04B18FC582800D202E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9EB2A03118FC582800D202E9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9EB2A03218FC582800D202E9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9EB2A03A18FC582800D202E9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9EB2A03B18FC582800D202E9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9EB2A05018FC582800D202E9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9EB2A05118FC582800D202E9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9EB2A05518FC582800D202E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9EB2A05618FC582800D202E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9EB2A05818FC582800D202E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CAPSPhotoViewExample/CAPSPhotoViewExample-Prefix.pch";
+				INFOPLIST_FILE = "CAPSPhotoViewExample/CAPSPhotoViewExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9EB2A05918FC582800D202E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CAPSPhotoViewExample/CAPSPhotoViewExample-Prefix.pch";
+				INFOPLIST_FILE = "CAPSPhotoViewExample/CAPSPhotoViewExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9EB2A05B18FC582800D202E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CAPSPhotoViewExample.app/CAPSPhotoViewExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CAPSPhotoViewExample/CAPSPhotoViewExample-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CAPSPhotoViewExampleTests/CAPSPhotoViewExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9EB2A05C18FC582800D202E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CAPSPhotoViewExample.app/CAPSPhotoViewExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CAPSPhotoViewExample/CAPSPhotoViewExample-Prefix.pch";
+				INFOPLIST_FILE = "CAPSPhotoViewExampleTests/CAPSPhotoViewExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9EB2A02018FC582800D202E9 /* Build configuration list for PBXProject "CAPSPhotoViewExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EB2A05518FC582800D202E9 /* Debug */,
+				9EB2A05618FC582800D202E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9EB2A05718FC582800D202E9 /* Build configuration list for PBXNativeTarget "CAPSPhotoViewExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EB2A05818FC582800D202E9 /* Debug */,
+				9EB2A05918FC582800D202E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9EB2A05A18FC582800D202E9 /* Build configuration list for PBXNativeTarget "CAPSPhotoViewExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EB2A05B18FC582800D202E9 /* Debug */,
+				9EB2A05C18FC582800D202E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9EB2A01D18FC582800D202E9 /* Project object */;
+}
