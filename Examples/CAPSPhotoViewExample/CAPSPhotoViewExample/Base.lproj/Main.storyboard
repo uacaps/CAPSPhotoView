@@ -12,18 +12,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg" id="ypr-sb-PPf">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Long-tongued Galaxy S5 Wallpapers.jpg" id="ypr-sb-PPf">
                                 <rect key="frame" x="110" y="58" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PbA-In-Eck">
                                 <rect key="frame" x="110" y="58" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="openPhotoView:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zqn-Fm-jbV"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg" id="pR4-aL-O2G">
+                                <rect key="frame" x="33" y="234" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Puw-0r-eMP">
+                                <rect key="frame" x="33" y="234" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openPhotoView2:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Tzl-cD-56b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -32,8 +46,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="imageButton" destination="PbA-In-Eck" id="Mj6-Kb-4xs"/>
                         <outlet property="imageView" destination="ypr-sb-PPf" id="iyA-Sz-zXF"/>
+                        <outlet property="imageView2" destination="pR4-aL-O2G" id="QKS-ly-zYf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -41,6 +55,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Long-tongued Galaxy S5 Wallpapers.jpg" width="1080" height="1920"/>
         <image name="baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg" width="372" height="423"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

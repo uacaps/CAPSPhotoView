@@ -11,6 +11,6 @@
 @interface CAPSViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *imageButton;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView2;
 
 @end

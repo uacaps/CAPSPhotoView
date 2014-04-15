@@ -24,6 +24,9 @@
 		9EB2A06618FC58A200D202E9 /* CAPSPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A06418FC58A200D202E9 /* CAPSPhotoView.m */; };
 		9EB2A06718FC58A200D202E9 /* CAPSPhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A06518FC58A200D202E9 /* CAPSPhotoView.xib */; };
 		9EB2A06B18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A06A18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg */; };
+		9EB2A06D18FD829C00D202E9 /* Long_cat_is_Long_by_Plastik_Rainbows.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A06C18FD829C00D202E9 /* Long_cat_is_Long_by_Plastik_Rainbows.jpg */; };
+		9EB2A06F18FD837700D202E9 /* fire-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A06E18FD837700D202E9 /* fire-1.jpg */; };
+		9EB2A07118FD83C600D202E9 /* Long-tongued Galaxy S5 Wallpapers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A07018FD83C600D202E9 /* Long-tongued Galaxy S5 Wallpapers.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		9EB2A06418FC58A200D202E9 /* CAPSPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAPSPhotoView.m; path = ../../../CAPSPhotoView/CAPSPhotoView.m; sourceTree = "<group>"; };
 		9EB2A06518FC58A200D202E9 /* CAPSPhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CAPSPhotoView.xib; path = ../../../CAPSPhotoView/CAPSPhotoView.xib; sourceTree = "<group>"; };
 		9EB2A06A18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg"; sourceTree = "<group>"; };
+		9EB2A06C18FD829C00D202E9 /* Long_cat_is_Long_by_Plastik_Rainbows.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Long_cat_is_Long_by_Plastik_Rainbows.jpg; sourceTree = "<group>"; };
+		9EB2A06E18FD837700D202E9 /* fire-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "fire-1.jpg"; sourceTree = "<group>"; };
+		9EB2A07018FD83C600D202E9 /* Long-tongued Galaxy S5 Wallpapers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Long-tongued Galaxy S5 Wallpapers.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,9 @@
 			isa = PBXGroup;
 			children = (
 				9EB2A06A18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg */,
+				9EB2A06C18FD829C00D202E9 /* Long_cat_is_Long_by_Plastik_Rainbows.jpg */,
+				9EB2A06E18FD837700D202E9 /* fire-1.jpg */,
+				9EB2A07018FD83C600D202E9 /* Long-tongued Galaxy S5 Wallpapers.jpg */,
 				9EB2A03018FC582800D202E9 /* CAPSPhotoViewExample-Info.plist */,
 				9EB2A03118FC582800D202E9 /* InfoPlist.strings */,
 				9EB2A03418FC582800D202E9 /* main.m */,
@@ -248,11 +257,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EB2A07118FD83C600D202E9 /* Long-tongued Galaxy S5 Wallpapers.jpg in Resources */,
 				9EB2A06B18FC609600D202E9 /* baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg in Resources */,
+				9EB2A06F18FD837700D202E9 /* fire-1.jpg in Resources */,
 				9EB2A04118FC582800D202E9 /* Images.xcassets in Resources */,
 				9EB2A03318FC582800D202E9 /* InfoPlist.strings in Resources */,
 				9EB2A03C18FC582800D202E9 /* Main.storyboard in Resources */,
 				9EB2A06718FC58A200D202E9 /* CAPSPhotoView.xib in Resources */,
+				9EB2A06D18FD829C00D202E9 /* Long_cat_is_Long_by_Plastik_Rainbows.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

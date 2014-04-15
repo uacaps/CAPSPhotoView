@@ -3,8 +3,35 @@
 //  TCSO-Public
 //
 //  Created by Niklas Fahl on 3/14/14.
-//  Copyright (c) 2014 Center for Advanced Public Safety. All rights reserved.
 //
+//  Copyright (c) 2012 The Board of Trustees of The University of Alabama
+//  All rights reserved.
+//
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions
+//  are met:
+//
+//  1. Redistributions of source code must retain the above copyright
+//     notice, this list of conditions and the following disclaimer.
+//  2. Redistributions in binary form must reproduce the above copyright
+//     notice, this list of conditions and the following disclaimer in the
+//     documentation and/or other materials provided with the distribution.
+//  3. Neither the name of the University nor the names of the contributors
+//     may be used to endorse or promote products derived from this software
+//     without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+//  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+//  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+//  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+//  THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+//  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+//  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+//  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+//  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+//  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+//  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+//  OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "CAPSPhotoView.h"
 
@@ -14,6 +41,7 @@
 - (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle
 {
     self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([CAPSPhotoView class]) owner:nil options:nil][0];
+    
     if (self) {
         // Initialization code
         
@@ -31,6 +59,7 @@
         closeBtn.layer.borderWidth = 1.0;
         closeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     }
+    
     return self;
 }
 
@@ -44,45 +73,63 @@
     [imageView addGestureRecognizer:imageViewTouchGesture];
     [imageViewTouchGesture setDelegate:self];
     
-    UITapGestureRecognizer *dimViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
-    [dimView addGestureRecognizer:dimViewTouchGesture];
-    [dimViewTouchGesture setDelegate:self];
+//    UITapGestureRecognizer *dimViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
+//    [dimView addGestureRecognizer:dimViewTouchGesture];
+//    [dimViewTouchGesture setDelegate:self];
     
     UIPinchGestureRecognizer *imageViewPinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchToZoom:)];
-    [imageView addGestureRecognizer:imageViewPinchGesture];
+    [photoDetailView addGestureRecognizer:imageViewPinchGesture];
     [imageViewPinchGesture setDelegate:self];
+    
+    UIPinchGestureRecognizer *imageViewPinchGesture2 = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchToZoom:)];
+    [imageView addGestureRecognizer:imageViewPinchGesture2];
+    [imageViewPinchGesture2 setDelegate:self];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [panGesture setDelaysTouchesBegan:TRUE];
     [panGesture setDelaysTouchesEnded:TRUE];
     [panGesture setCancelsTouchesInView:TRUE];
-    [imageView addGestureRecognizer:panGesture];
+    [photoDetailView addGestureRecognizer:panGesture];
     [panGesture setDelegate:self];
+    
+    UIPanGestureRecognizer *panGesture2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [panGesture2 setDelaysTouchesBegan:TRUE];
+    [panGesture2 setDelaysTouchesEnded:TRUE];
+    [panGesture2 setCancelsTouchesInView:TRUE];
+    [imageView addGestureRecognizer:panGesture2];
+    [panGesture2 setDelegate:self];
 }
 
 // Swipe photo up or down to close
 - (void)handlePan:(UIPanGestureRecognizer*)recognizer
 {
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.2
                      animations:^{
                          photoDetailView.alpha = 0;
                      }];
     
-    CGPoint translation = [recognizer translationInView:recognizer.view];
+    CGPoint translation = [recognizer translationInView:imageView];
     
-    recognizer.view.center=CGPointMake(recognizer.view.center.x, recognizer.view.center.y+ translation.y);
+    imageView.center=CGPointMake(imageView.center.x, imageView.center.y+ translation.y);
     
-    [recognizer setTranslation:CGPointMake(0, 0) inView:recognizer.view];
+    [recognizer setTranslation:CGPointMake(0, 0) inView:imageView];
     
+    // Fade on swipe up/down
+    float rangeMax = 150.0;
+    float startImageViewY = 284.0;
+    dimView.alpha = (rangeMax - ABS(startImageViewY - imageView.center.y)) / rangeMax;
+    NSLog(@"Alpha is: %f at Y: %f", dimView.alpha, imageView.center.y);
+    
+    // Close photo view or bounce back depending on how far picture got swiped up/down
     if(recognizer.state == UIGestureRecognizerStateEnded){
     
-        if (imageView.frame.origin.y > -17 && imageView.frame.origin.y < 153) {
+        if (imageView.frame.origin.y > -47 && imageView.frame.origin.y < 153) {
             [UIView beginAnimations:@"RIGHT-WITH-RIGHT" context:NULL];
             [UIView setAnimationDuration:0.2];
             [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:nil cache:YES];
             [UIView setAnimationBeginsFromCurrentState:YES];
             /* Reset the frame view size*/
-            imageView.frame = CGRectMake(0, 53, 320, 427);
+            imageView.frame = CGRectMake(0, 0, 320, 568);
             [UIView setAnimationDelegate:self];
             /*  Call bounce animation method */
             [UIView setAnimationDidStopSelector:@selector(bounceBackToOrigin)];
@@ -102,6 +149,7 @@
                              animations:^{
                                  dimView.alpha = 0;
                                  imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
+                                 imageView.contentMode = UIViewContentModeScaleAspectFill;
                              }];
             
             [self performSelector:@selector(toggleOriginalImageView) withObject:nil afterDelay:0.4];
@@ -125,6 +173,7 @@
     [UIView animateWithDuration:0.3
                      animations:^{
                                     photoDetailView.alpha = 1;
+                                    dimView.alpha = 1;
                                 }];
 }
 
@@ -202,7 +251,6 @@
                              }];
         }
     }
-    
 }
 
 - (void)removeSelfFromSuperview
@@ -210,11 +258,21 @@
     [self removeFromSuperview];
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return hidden;
+}
+
 - (void)toggleStatusBar
 {
     [[UIApplication sharedApplication] setStatusBarHidden:hidden];
     
     hidden = !hidden;
+    
+//    [UIView animateWithDuration:1.0 animations:^{
+//        hidden = !hidden;
+//        [[UIApplication sharedApplication] setNeedsStatusBarAppearanceUpdate];
+//    }];
 }
 
 - (IBAction)tempCloseBtn:(id)sender
@@ -233,6 +291,7 @@
                        animations:^{
                                 dimView.alpha = 0;                                                                                                                                                     
                                 imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
+                                imageView.contentMode = UIViewContentModeScaleAspectFill;
                           }];
     
     [self performSelector:@selector(toggleOriginalImageView) withObject:nil afterDelay:0.4];
@@ -288,10 +347,7 @@
     if (startPhotoRadius > 0) {
         imageView.layer.cornerRadius = startPhotoRadius;
         imageView.clipsToBounds = YES;
-//        imageView.layer.borderWidth = 0.5;
-//        imageView.layer.borderColor = [UIColor colorWithWhite:0.0 alpha:65.0].CGColor;
         
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     
     [dimView setAlpha:0];
@@ -308,21 +364,15 @@
     [imageView.layer setCornerRadius:0.0];
     [imageView.layer addAnimation:animation forKey:@"cornerRadius"];
     
-    [UIView animateWithDuration:0.4
-                     animations:^{
-                         [dimView setAlpha:1];
-                         
-                         [imageView setFrame:CGRectMake(0, 53, 320, 427)];
-                     }];
+//    [UIView animateWithDuration:0.4
+//                     animations:^{
+//                         [dimView setAlpha:1];
+//                         [imageView setFrame:CGRectMake(0, 0, 320, 568)];
+//                     }];
     
     
     [self performSelector:@selector(showHidePhotoDetailView) withObject:nil afterDelay:0.4];
     [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.25];
-}
-
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
 }
 
 @end
