@@ -15,11 +15,17 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg" id="ige-ru-inT">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="bAH-ho-Vwj">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </imageView>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg" id="ige-ru-inT">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                    </subviews>
+                </scrollView>
                 <view contentMode="scaleToFill" id="bPQ-Ns-pih">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,6 +42,11 @@
                                 <action selector="tempCloseBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="rB1-9h-0p4"/>
                             </connections>
                         </button>
+                        <view alpha="0.49999999999999961" contentMode="scaleToFill" id="rlN-S9-4ft">
+                            <rect key="frame" x="0.0" y="482" width="320" height="86"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <view alpha="0.39999999999999963" contentMode="scaleToFill" id="7em-DT-Nxl">
                             <rect key="frame" x="10" y="509" width="300" height="1"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,6 +85,7 @@
             <connections>
                 <outlet property="closeBtn" destination="VL1-Lv-oga" id="JTC-vM-6kI"/>
                 <outlet property="dimView" destination="LPc-Ve-7Dr" id="zZv-Lv-gJh"/>
+                <outlet property="imageScrollView" destination="bAH-ho-Vwj" id="uUU-Rh-wQv"/>
                 <outlet property="imageView" destination="ige-ru-inT" id="5HX-gl-j7v"/>
                 <outlet property="photoDetailView" destination="bPQ-Ns-pih" id="pEV-Rq-h7j"/>
             </connections>

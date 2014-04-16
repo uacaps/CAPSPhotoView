@@ -73,17 +73,9 @@
     [imageView addGestureRecognizer:imageViewTouchGesture];
     [imageViewTouchGesture setDelegate:self];
     
-//    UITapGestureRecognizer *dimViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
-//    [dimView addGestureRecognizer:dimViewTouchGesture];
-//    [dimViewTouchGesture setDelegate:self];
-    
-    UIPinchGestureRecognizer *imageViewPinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchToZoom:)];
-    [photoDetailView addGestureRecognizer:imageViewPinchGesture];
-    [imageViewPinchGesture setDelegate:self];
-    
-    UIPinchGestureRecognizer *imageViewPinchGesture2 = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchToZoom:)];
-    [imageView addGestureRecognizer:imageViewPinchGesture2];
-    [imageViewPinchGesture2 setDelegate:self];
+    UITapGestureRecognizer *scrollViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
+    [imageScrollView addGestureRecognizer:scrollViewTouchGesture];
+    [scrollViewTouchGesture setDelegate:self];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [panGesture setDelaysTouchesBegan:TRUE];
@@ -91,13 +83,46 @@
     [panGesture setCancelsTouchesInView:TRUE];
     [photoDetailView addGestureRecognizer:panGesture];
     [panGesture setDelegate:self];
+//
+//    UIPanGestureRecognizer *panGesture2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+//    [panGesture2 setDelaysTouchesBegan:TRUE];
+//    [panGesture2 setDelaysTouchesEnded:TRUE];
+//    [panGesture2 setCancelsTouchesInView:TRUE];
+//    [imageView addGestureRecognizer:panGesture2];
+//    [panGesture2 setDelegate:self];
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return imageView;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    UIView *subView = [scrollView.subviews objectAtIndex:0];
     
-    UIPanGestureRecognizer *panGesture2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-    [panGesture2 setDelaysTouchesBegan:TRUE];
-    [panGesture2 setDelaysTouchesEnded:TRUE];
-    [panGesture2 setCancelsTouchesInView:TRUE];
-    [imageView addGestureRecognizer:panGesture2];
-    [panGesture2 setDelegate:self];
+    CGFloat offsetX = (scrollView.bounds.size.width > scrollView.contentSize.width)?
+    (scrollView.bounds.size.width - scrollView.contentSize.width) * 0.5 : 0.0;
+    
+    CGFloat offsetY = (scrollView.bounds.size.height > scrollView.contentSize.height)?
+    (scrollView.bounds.size.height - scrollView.contentSize.height) * 0.5 : 0.0;
+    
+    subView.center = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX,
+                                 scrollView.contentSize.height * 0.5 + offsetY);
+    
+    scrollView.bounces = YES;
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
+{
+    if (scale == 1.0) {
+        scrollView.bounces = NO;
+        
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             photoDetailView.alpha = 1;
+                         }];
+    }
 }
 
 // Swipe photo up or down to close
@@ -118,18 +143,17 @@
     float rangeMax = 150.0;
     float startImageViewY = 284.0;
     dimView.alpha = (rangeMax - ABS(startImageViewY - imageView.center.y)) / rangeMax;
-    NSLog(@"Alpha is: %f at Y: %f", dimView.alpha, imageView.center.y);
     
     // Close photo view or bounce back depending on how far picture got swiped up/down
     if(recognizer.state == UIGestureRecognizerStateEnded){
     
-        if (imageView.frame.origin.y > -47 && imageView.frame.origin.y < 153) {
+        if (imageView.frame.origin.y > photoViewImageOrigin.y - 100 && imageView.frame.origin.y < photoViewImageOrigin.y + 100) {
             [UIView beginAnimations:@"RIGHT-WITH-RIGHT" context:NULL];
             [UIView setAnimationDuration:0.2];
             [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:nil cache:YES];
             [UIView setAnimationBeginsFromCurrentState:YES];
             /* Reset the frame view size*/
-            imageView.frame = CGRectMake(0, 0, 320, 568);
+            imageView.frame = CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height);//CGRectMake(0, 0, 320, 568);
             [UIView setAnimationDelegate:self];
             /*  Call bounce animation method */
             [UIView setAnimationDidStopSelector:@selector(bounceBackToOrigin)];
@@ -149,7 +173,6 @@
                              animations:^{
                                  dimView.alpha = 0;
                                  imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
-                                 imageView.contentMode = UIViewContentModeScaleAspectFill;
                              }];
             
             [self performSelector:@selector(toggleOriginalImageView) withObject:nil afterDelay:0.4];
@@ -177,44 +200,6 @@
                                 }];
 }
 
-- (void)pinchToZoom:(UIPinchGestureRecognizer *)recognizer {
-    if (recognizer.state == UIGestureRecognizerStateEnded
-        || recognizer.state == UIGestureRecognizerStateChanged) {
-        
-        [UIView animateWithDuration:0.1
-                         animations:^{
-                             photoDetailView.alpha = 0;
-                         }];
-        
-        CGFloat currentScale = imageView.frame.size.width / imageView.bounds.size.width;
-        CGFloat newScale = currentScale * recognizer.scale;
-        
-        if (newScale < 0.3) {
-            newScale = 0.3;
-        }
-        if (newScale > 3.5) {
-            newScale = 3.5;
-        }
-        
-        CGAffineTransform transform = CGAffineTransformMakeScale(newScale, newScale);
-        imageView.transform = transform;
-        recognizer.scale = 1;
-        
-        if ([recognizer state] == UIGestureRecognizerStateEnded) {
-            if (newScale < 1.0) {
-                [UIView animateWithDuration:0.3
-                                 animations:^{
-                                     CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 1.0);
-                                     imageView.transform = transform;
-                                     recognizer.scale = 1;
-                                 }];
-                
-                [self performSelector:@selector(showHidePhotoDetailView) withObject:nil afterDelay:0.4];
-            }
-        }
-    }
-}
-
 - (void)hidePhotoDetailView
 {
     [UIView animateWithDuration:0.3
@@ -223,19 +208,17 @@
                      }];
 }
 
-- (void)transformImageViewToOriginal
-{
-    CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 1.0);
-    imageView.transform = transform;
-}
-
 - (void)showHidePhotoDetailView
 {
-    // check if image needs to be zoomed out to original size
+    // Check if image needs to be zoomed out to original size
     if (imageView.frame.size.width > 320) {
         [UIView animateWithDuration:0.3
                          animations:^{
-                             [self transformImageViewToOriginal];
+                             // Set content size back to zoomed out image size
+                             imageScrollView.contentSize = photoViewImageSize;
+                             
+                             // Set image frame back to original zoomed out frame
+                             [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
                          }];
         [self performSelector:@selector(showHidePhotoDetailView) withObject:nil afterDelay:0.4];
     } else {
@@ -291,7 +274,7 @@
                        animations:^{
                                 dimView.alpha = 0;                                                                                                                                                     
                                 imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
-                                imageView.contentMode = UIViewContentModeScaleAspectFill;
+//                                imageView.contentMode = UIViewContentModeScaleAspectFill;
                           }];
     
     [self performSelector:@selector(toggleOriginalImageView) withObject:nil afterDelay:0.4];
@@ -335,20 +318,37 @@
 // Start showing Photoview
 - (void)fadeInPhotoViewFromImageView:(UIImageView *)imgView
 {
+    
+    
     // Use original image view to make effect of animation better by hiding it
+    imgView.clipsToBounds = YES;
     startImageView = imgView;
     [self toggleOriginalImageView];
     
     [self setImageInfoFromImageView:startImageView];
     
-    [imageView setFrame:CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height)];
+    imageView.frame = startImageView.frame;
+//    [imageView setFrame:CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height)];
     
     // Set up image view if necessary for radius
     if (startPhotoRadius > 0) {
         imageView.layer.cornerRadius = startPhotoRadius;
-        imageView.clipsToBounds = YES;
+//        imageView.clipsToBounds = YES;
         
     }
+    
+    imageView.clipsToBounds = YES;
+//    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+//    NSLog(@"bounds.origin.x: %f", imageView.bounds.origin.x);
+//    NSLog(@"bounds.origin.y: %f", imageView.bounds.origin.y);
+//    NSLog(@"bounds.size.width: %f", imageView.bounds.size.width);
+//    NSLog(@"bounds.size.height: %f", imageView.bounds.size.height);
+//    
+//    NSLog(@"frame.origin.x: %f", imageView.frame.origin.x);
+//    NSLog(@"frame.origin.y: %f", imageView.frame.origin.y);
+//    NSLog(@"frame.size.width: %f", imageView.frame.size.width);
+//    NSLog(@"frame.size.height: %f", imageView.frame.size.height);
     
     [dimView setAlpha:0];
     [photoDetailView setAlpha:0];
@@ -364,12 +364,27 @@
     [imageView.layer setCornerRadius:0.0];
     [imageView.layer addAnimation:animation forKey:@"cornerRadius"];
     
-//    [UIView animateWithDuration:0.4
-//                     animations:^{
-//                         [dimView setAlpha:1];
-//                         [imageView setFrame:CGRectMake(0, 0, 320, 568)];
-//                     }];
     
+    // Calculate height for image in photo view
+    float scale = 320 / startImageView.image.size.width;
+    photoViewImageSize.height = startImageView.image.size.height * scale;
+    photoViewImageSize.width = 320;
+    photoViewImageOrigin.x = 0;
+    photoViewImageOrigin.y = (568 - photoViewImageSize.height) / 2;
+    
+    NSLog(@"Scale: %f, Width: %f", scale, startImageView.bounds.size.width);
+    
+    [UIView animateWithDuration:0.4
+                     animations:^{
+                         [dimView setAlpha:1];
+                         
+                         [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
+                     }];
+    
+    imageScrollView.minimumZoomScale = 1.0;
+    imageScrollView.maximumZoomScale = 4.0;
+    imageScrollView.contentSize = imageView.frame.size;
+    imageScrollView.delegate = self;
     
     [self performSelector:@selector(showHidePhotoDetailView) withObject:nil afterDelay:0.4];
     [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.25];

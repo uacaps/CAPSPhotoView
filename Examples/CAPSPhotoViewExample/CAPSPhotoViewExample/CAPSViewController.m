@@ -50,6 +50,18 @@
     [photoView fadeInPhotoViewFromImageView:self.imageView2];
 }
 
+- (IBAction)openPhotoView3:(id)sender
+{
+    // Set up photo view
+    CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
+                                                          dateTitle:@"Date: 03/12/2014"
+                                                              title:@"Title"
+                                                           subtitle:@"Subtitle"];
+    
+    // Open/Fade in photo view from original image
+    [photoView fadeInPhotoViewFromImageView:self.imageView3];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

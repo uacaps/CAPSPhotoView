@@ -35,7 +35,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CAPSPhotoView : UIView <UIGestureRecognizerDelegate>
+@interface CAPSPhotoView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate>
 {
     __weak IBOutlet UIImageView *imageView;
     
@@ -45,9 +45,15 @@
     
     __weak IBOutlet UIButton *closeBtn;
     
+    __weak IBOutlet UIScrollView *imageScrollView;
+    
     CGPoint photoOrigin;
     
     CGSize photoSize;
+    
+    CGPoint photoViewImageOrigin;
+    
+    CGSize photoViewImageSize;
     
     CGFloat startPhotoRadius;
     

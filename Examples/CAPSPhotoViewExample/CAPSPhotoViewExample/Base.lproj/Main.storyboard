@@ -13,11 +13,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Long-tongued Galaxy S5 Wallpapers.jpg" id="ypr-sb-PPf">
-                                <rect key="frame" x="110" y="58" width="100" height="100"/>
+                                <rect key="frame" x="110" y="58" width="100" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PbA-In-Eck">
-                                <rect key="frame" x="110" y="58" width="100" height="100"/>
+                                <rect key="frame" x="110" y="58" width="100" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,17 +27,31 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg" id="pR4-aL-O2G">
-                                <rect key="frame" x="33" y="234" width="100" height="100"/>
+                                <rect key="frame" x="49" y="225" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Puw-0r-eMP">
-                                <rect key="frame" x="33" y="234" width="100" height="100"/>
+                                <rect key="frame" x="49" y="225" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="openPhotoView2:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Tzl-cD-56b"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Coconut-Tree-at-Beach-Nature-Wallpaper.jpg" id="c3m-tT-tjj">
+                                <rect key="frame" x="135" y="377" width="135" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mVS-DL-3GO">
+                                <rect key="frame" x="135" y="377" width="135" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openPhotoView3:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4fV-f0-sfw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -48,6 +62,7 @@
                     <connections>
                         <outlet property="imageView" destination="ypr-sb-PPf" id="iyA-Sz-zXF"/>
                         <outlet property="imageView2" destination="pR4-aL-O2G" id="QKS-ly-zYf"/>
+                        <outlet property="imageView3" destination="c3m-tT-tjj" id="esm-gp-b1n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -55,6 +70,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Coconut-Tree-at-Beach-Nature-Wallpaper.jpg" width="1920" height="1080"/>
         <image name="Long-tongued Galaxy S5 Wallpapers.jpg" width="1080" height="1920"/>
         <image name="baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg" width="372" height="423"/>
     </resources>
