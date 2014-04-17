@@ -65,17 +65,25 @@
 
 - (void)buildGestureRecognizers
 {
-    UITapGestureRecognizer *PhotoDetailViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidePhotoDetailView)];
-    [photoDetailView addGestureRecognizer:PhotoDetailViewTouchGesture];
-    [PhotoDetailViewTouchGesture setDelegate:self];
+    UITapGestureRecognizer *imageSingleTapTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
+    imageSingleTapTouchGesture.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:imageSingleTapTouchGesture];
+    [imageSingleTapTouchGesture setDelegate:self];
+//
+//    UITapGestureRecognizer *imageViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
+//    [imageView addGestureRecognizer:imageViewTouchGesture];
+//    [imageViewTouchGesture setDelegate:self];
+//    
+//    UITapGestureRecognizer *scrollViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
+//    [imageScrollView addGestureRecognizer:scrollViewTouchGesture];
+//    [scrollViewTouchGesture setDelegate:self];
     
-    UITapGestureRecognizer *imageViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
-    [imageView addGestureRecognizer:imageViewTouchGesture];
-    [imageViewTouchGesture setDelegate:self];
+    UITapGestureRecognizer *imageDoubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapToZoom:)];
+    imageDoubleTapGesture.numberOfTapsRequired = 2;
+    [self addGestureRecognizer:imageDoubleTapGesture];
+    [imageDoubleTapGesture setDelegate:self];
     
-    UITapGestureRecognizer *scrollViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
-    [imageScrollView addGestureRecognizer:scrollViewTouchGesture];
-    [scrollViewTouchGesture setDelegate:self];
+    [imageSingleTapTouchGesture requireGestureRecognizerToFail:imageDoubleTapGesture];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [panGesture setDelaysTouchesBegan:TRUE];
@@ -83,6 +91,9 @@
     [panGesture setCancelsTouchesInView:TRUE];
     [photoDetailView addGestureRecognizer:panGesture];
     [panGesture setDelegate:self];
+    
+//    [self addGestureRecognizer:imageScrollView.pinchGestureRecognizer];
+//    [pinchRecognizer setDelegate:imageScrollView];
 //
 //    UIPanGestureRecognizer *panGesture2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 //    [panGesture2 setDelaysTouchesBegan:TRUE];
@@ -121,6 +132,50 @@
         [UIView animateWithDuration:0.3
                          animations:^{
                              photoDetailView.alpha = 1;
+                         }];
+    }
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
+{
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         photoDetailView.alpha = 0;
+                     }];
+}
+
+- (void)handleDoubleTapToZoom:(UIPanGestureRecognizer*)recognizer
+{
+    if (imageView.frame.size.width > 320) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             // Set content size back to zoomed out image size
+                             imageScrollView.contentSize = photoViewImageSize;
+                             
+                             // Set image frame back to original zoomed out frame
+                             [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
+                             
+                             // Show detail view
+                             photoDetailView.alpha = 1;
+                         }];
+    } else {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             
+                             int scale = 2;
+                             
+                             // Set content size back to zoomed out image size
+                             imageScrollView.contentSize = CGSizeMake(photoViewImageSize.width * scale, photoViewImageSize.height * scale);
+                             
+                             CGRect oldFrame = imageView.frame;
+                             
+                             // Set image frame back to original zoomed out frame
+                             [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width * scale, photoViewImageSize.height * scale)];
+                             
+                             imageScrollView.contentOffset = CGPointMake((imageView.frame.size.width - oldFrame.size.width)/2, (imageView.frame.size.height - oldFrame.size.height)/2);
+                             
+                             // Hide detail view
+                             photoDetailView.alpha = 0;
                          }];
     }
 }
@@ -193,19 +248,11 @@
     bounceAnimation.additive = NO;
     [imageView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
     
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.1
                      animations:^{
                                     photoDetailView.alpha = 1;
                                     dimView.alpha = 1;
                                 }];
-}
-
-- (void)hidePhotoDetailView
-{
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         photoDetailView.alpha = 0;
-                     }];
 }
 
 - (void)showHidePhotoDetailView
@@ -219,9 +266,12 @@
                              
                              // Set image frame back to original zoomed out frame
                              [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
+                             
+                             // Show detail view
+                             photoDetailView.alpha = 1;
                          }];
-        [self performSelector:@selector(showHidePhotoDetailView) withObject:nil afterDelay:0.4];
     } else {
+        // Show or hide detail view
         if (photoDetailView.alpha == 0) {
             [UIView animateWithDuration:0.3
                              animations:^{
@@ -251,11 +301,6 @@
     [[UIApplication sharedApplication] setStatusBarHidden:hidden];
     
     hidden = !hidden;
-    
-//    [UIView animateWithDuration:1.0 animations:^{
-//        hidden = !hidden;
-//        [[UIApplication sharedApplication] setNeedsStatusBarAppearanceUpdate];
-//    }];
 }
 
 - (IBAction)tempCloseBtn:(id)sender
@@ -274,7 +319,6 @@
                        animations:^{
                                 dimView.alpha = 0;                                                                                                                                                     
                                 imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
-//                                imageView.contentMode = UIViewContentModeScaleAspectFill;
                           }];
     
     [self performSelector:@selector(toggleOriginalImageView) withObject:nil afterDelay:0.4];
@@ -385,6 +429,8 @@
     imageScrollView.maximumZoomScale = 4.0;
     imageScrollView.contentSize = imageView.frame.size;
     imageScrollView.delegate = self;
+    
+    [self addGestureRecognizer:imageScrollView.pinchGestureRecognizer];
     
     [self performSelector:@selector(showHidePhotoDetailView) withObject:nil afterDelay:0.4];
     [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.25];
