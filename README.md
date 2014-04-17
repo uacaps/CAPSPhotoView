@@ -6,6 +6,6 @@ A pop-out, facebook-style photo viewer for showing an image from a UIImageView o
 
 ##### A little preview of CAPSPhotoView in its early stages
 
-![PhotoViewPreview](https://github.com/uacaps/CAPSPhotoView/blob/master/Resources/Demos/PhotoViewPreview.gif?raw=true)
+![PhotoViewPreview](https://github.com/uacaps/ResourceRepo/blob/master/CAPSPhotoView/PhotoViewPreview.gif?raw=true)
 
 
