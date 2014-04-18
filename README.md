@@ -10,11 +10,11 @@ A pop-out, facebook-style photo viewer for showing an image from a UIImageView o
 
 ## Installation
 
-** Cocoa Pods **
+**Cocoa Pods**
 
 Coming in the future.
 
-** Manual Installation **
+**Manual Installation**
 
 All the classes required for DateTools are located in the DateTools folder in the root of this repository. They are listed below:
 
