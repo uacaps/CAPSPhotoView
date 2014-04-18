@@ -158,9 +158,9 @@
                              CGFloat horizontalScale = deviceWidth / imageView.frame.size.width;
                              
                              // set scale to 2 if image already spans entire
-                             if (verticalScale == 1.0 && horizontalScale == 1.0) {
+                             if (verticalScale <= 1.0 && horizontalScale <= 1.0) {
                                  [imageScrollView setZoomScale:2.0 animated:YES];
-                             } else if (horizontalScale == 1.0) {
+                             } else if (horizontalScale <= 1.0) {
                                  [imageScrollView setZoomScale:verticalScale animated:YES];
                              } else {
                                  [imageScrollView setZoomScale:horizontalScale animated:YES];
@@ -269,7 +269,7 @@
 - (void)showHidePhotoDetailView
 {
     // Check if image needs to be zoomed out to original size
-    if (imageView.frame.size.width > deviceWidth) {
+    if (imageView.frame.size.width > deviceWidth || (int)imageView.frame.size.height > deviceHeight) {
         [UIView animateWithDuration:0.3
                          animations:^{
                              [imageScrollView setZoomScale:1.0 animated:YES];

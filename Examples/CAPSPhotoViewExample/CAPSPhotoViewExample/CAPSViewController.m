@@ -35,7 +35,7 @@
                                                               title:@"Title"
                                                            subtitle:@"Subtitle"];
     
-    // Open/Fade in photo view from original image
+    // Open/Fade in photo view from original image view
     [photoView fadeInPhotoViewFromImageView:self.imageView];
 }
 
@@ -47,7 +47,7 @@
                                                               title:@"Title"
                                                            subtitle:@"Subtitle"];
     
-    // Open/Fade in photo view from original image
+    // Open/Fade in photo view from original image view
     [photoView fadeInPhotoViewFromImageView:self.imageView2];
 }
 
@@ -59,7 +59,7 @@
                                                               title:@"Title"
                                                            subtitle:@"Subtitle"];
     
-    // Open/Fade in photo view from original image
+    // Open/Fade in photo view from original image view
     [photoView fadeInPhotoViewFromImageView:self.imageView3];
 }
 
@@ -71,7 +71,7 @@
                                                               title:@"Title"
                                                            subtitle:@"Subtitle"];
     
-    // Open/Fade in photo view from original image
+    // Open/Fade in photo view from original image view
     [photoView fadeInPhotoViewFromImageView:self.imageView4];
 }
 
@@ -86,7 +86,7 @@
     // Create UIImage view (not needed in future)
     UIImageView *modalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sign.jpg"]];
     
-    // Open/Fade in photo view from original image
+    // Open photo view as modal with image view
     [photoView openPhotoViewAsModalWithImageView:modalImageView];
 }
 
