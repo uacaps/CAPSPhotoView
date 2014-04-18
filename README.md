@@ -31,6 +31,13 @@ All the classes required for CAPSPhotoView are located in the CAPSPhotoView fold
 
 ![PhotoViewPreview](https://raw.githubusercontent.com/uacaps/ResourceRepo/master/CAPSPhotoView/PhotoViewPreviewLoop.gif)
 
+## How to use CAPSPhotoView
+
+#### Initialization
+
+#### Open CAPSPhotoView
+
+
 ## Future Work
 
 The following feature will be added in the future:
