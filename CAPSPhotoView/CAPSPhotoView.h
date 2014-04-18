@@ -66,6 +66,8 @@
     UIImageView *startImageView;
     
     UIImage *photo;
+    
+    float maxScale;
 }
 
 @property (weak, nonatomic) UILabel *titleLabel;

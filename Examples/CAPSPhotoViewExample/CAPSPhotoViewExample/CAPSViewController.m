@@ -20,10 +20,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // Image view with corner radius
     self.imageView2.layer.cornerRadius = self.imageView2.frame.size.height / 2;
     self.imageView2.clipsToBounds = YES;
     
-    self.imageView.clipsToBounds = YES;
+//    self.imageView.clipsToBounds = YES;
 }
 
 - (IBAction)openPhotoView:(id)sender
@@ -60,6 +61,18 @@
     
     // Open/Fade in photo view from original image
     [photoView fadeInPhotoViewFromImageView:self.imageView3];
+}
+
+- (IBAction)openPhotoView4:(id)sender
+{
+    // Set up photo view
+    CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
+                                                          dateTitle:@"Date: 03/12/2014"
+                                                              title:@"Title"
+                                                           subtitle:@"Subtitle"];
+    
+    // Open/Fade in photo view from original image
+    [photoView fadeInPhotoViewFromImageView:self.imageView4];
 }
 
 - (void)didReceiveMemoryWarning

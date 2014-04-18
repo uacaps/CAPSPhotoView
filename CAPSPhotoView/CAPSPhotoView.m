@@ -149,11 +149,7 @@
     if (imageView.frame.size.width > 320) {
         [UIView animateWithDuration:0.3
                          animations:^{
-                             // Set content size back to zoomed out image size
-                             imageScrollView.contentSize = photoViewImageSize;
-                             
-                             // Set image frame back to original zoomed out frame
-                             [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
+                             [imageScrollView setZoomScale:1.0 animated:YES];
                              
                              // Show detail view
                              photoDetailView.alpha = 1;
@@ -162,17 +158,13 @@
         [UIView animateWithDuration:0.3
                          animations:^{
                              
-                             int scale = 2;
+                             float scale = 568 / imageView.frame.size.height; // device height / image height
                              
-                             // Set content size back to zoomed out image size
-                             imageScrollView.contentSize = CGSizeMake(photoViewImageSize.width * scale, photoViewImageSize.height * scale);
-                             
-                             CGRect oldFrame = imageView.frame;
-                             
-                             // Set image frame back to original zoomed out frame
-                             [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width * scale, photoViewImageSize.height * scale)];
-                             
-                             imageScrollView.contentOffset = CGPointMake((imageView.frame.size.width - oldFrame.size.width)/2, (imageView.frame.size.height - oldFrame.size.height)/2);
+                             if (scale > maxScale) {
+                                 [imageScrollView setZoomScale:maxScale animated:YES];
+                             } else {
+                                 [imageScrollView setZoomScale:scale animated:YES];
+                             }
                              
                              // Hide detail view
                              photoDetailView.alpha = 0;
@@ -261,13 +253,8 @@
     if (imageView.frame.size.width > 320) {
         [UIView animateWithDuration:0.3
                          animations:^{
-                             // Set content size back to zoomed out image size
-                             imageScrollView.contentSize = photoViewImageSize;
+                             [imageScrollView setZoomScale:1.0 animated:YES];
                              
-                             // Set image frame back to original zoomed out frame
-                             [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
-                             
-                             // Show detail view
                              photoDetailView.alpha = 1;
                          }];
     } else {
@@ -362,8 +349,6 @@
 // Start showing Photoview
 - (void)fadeInPhotoViewFromImageView:(UIImageView *)imgView
 {
-    
-    
     // Use original image view to make effect of animation better by hiding it
     imgView.clipsToBounds = YES;
     startImageView = imgView;
@@ -372,27 +357,13 @@
     [self setImageInfoFromImageView:startImageView];
     
     imageView.frame = startImageView.frame;
-//    [imageView setFrame:CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height)];
     
     // Set up image view if necessary for radius
     if (startPhotoRadius > 0) {
         imageView.layer.cornerRadius = startPhotoRadius;
-//        imageView.clipsToBounds = YES;
-        
     }
     
     imageView.clipsToBounds = YES;
-//    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    
-//    NSLog(@"bounds.origin.x: %f", imageView.bounds.origin.x);
-//    NSLog(@"bounds.origin.y: %f", imageView.bounds.origin.y);
-//    NSLog(@"bounds.size.width: %f", imageView.bounds.size.width);
-//    NSLog(@"bounds.size.height: %f", imageView.bounds.size.height);
-//    
-//    NSLog(@"frame.origin.x: %f", imageView.frame.origin.x);
-//    NSLog(@"frame.origin.y: %f", imageView.frame.origin.y);
-//    NSLog(@"frame.size.width: %f", imageView.frame.size.width);
-//    NSLog(@"frame.size.height: %f", imageView.frame.size.height);
     
     [dimView setAlpha:0];
     [photoDetailView setAlpha:0];
@@ -400,6 +371,7 @@
     [[[[UIApplication sharedApplication] windows] lastObject] addSubview:self];
     [[[[UIApplication sharedApplication] windows] lastObject] bringSubviewToFront:self];
     
+    // Corner radius animation
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
     animation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionLinear];
     animation.fromValue = [NSNumber numberWithFloat:startPhotoRadius];
@@ -411,22 +383,34 @@
     
     // Calculate height for image in photo view
     float scale = 320 / startImageView.image.size.width;
-    photoViewImageSize.height = startImageView.image.size.height * scale;
-    photoViewImageSize.width = 320;
-    photoViewImageOrigin.x = 0;
-    photoViewImageOrigin.y = (568 - photoViewImageSize.height) / 2;
+    int height = startImageView.image.size.height * scale;
     
-    NSLog(@"Scale: %f, Width: %f", scale, startImageView.bounds.size.width);
+    // Accomodate long pictures
+    if (height > 568) { // height more than device height
+        scale = 568 / startImageView.image.size.height;
+        photoViewImageSize.height = 568;
+        photoViewImageSize.width = startImageView.image.size.width * scale;
+        photoViewImageOrigin.x = (320 - photoViewImageSize.width) / 2;
+        photoViewImageOrigin.y = 0;
+    } else {
+        photoViewImageSize.height = startImageView.image.size.height * scale;
+        photoViewImageSize.width = 320;
+        photoViewImageOrigin.x = 0;
+        photoViewImageOrigin.y = (568 - photoViewImageSize.height) / 2;
+    }
     
+    // Photo enlarge animation
     [UIView animateWithDuration:0.4
                      animations:^{
                          [dimView setAlpha:1];
                          
                          [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
                      }];
+
+    // default max scale
+    maxScale = 4.0;
     
-    imageScrollView.minimumZoomScale = 1.0;
-    imageScrollView.maximumZoomScale = 4.0;
+    imageScrollView.maximumZoomScale = maxScale;
     imageScrollView.contentSize = imageView.frame.size;
     imageScrollView.delegate = self;
     
