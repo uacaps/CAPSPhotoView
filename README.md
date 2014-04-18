@@ -37,7 +37,7 @@ All the classes required for CAPSPhotoView are located in the CAPSPhotoView fold
 
 To set up and initialize CAPSPhotoView simply use the code below replacing the parameters with your own values:
 
-```smalltalk
+```objective-c
 CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
                                                       dateTitle:@"Date: 03/12/2014"
                                                           title:@"Title"
