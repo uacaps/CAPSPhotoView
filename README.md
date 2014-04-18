@@ -16,7 +16,7 @@ Coming in the future.
 
 **Manual Installation**
 
-All the classes required for DateTools are located in the DateTools folder in the root of this repository. They are listed below:
+All the classes required for CAPSPhotoView are located in the CAPSPhotoView folder in the root of this repository. They are listed below:
 
 * <code>CAPSPhotoView.h</code>
 * <code>CAPSPhotoView.h</code>
