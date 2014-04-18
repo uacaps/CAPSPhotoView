@@ -7,32 +7,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CAPSPhotoView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="LPc-Ve-7Dr">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="bAH-ho-Vwj">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg" id="ige-ru-inT">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ige-ru-inT">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
                     </subviews>
                 </scrollView>
                 <view contentMode="scaleToFill" id="bPQ-Ns-pih">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VL1-Lv-oga">
                             <rect key="frame" x="253" y="11" width="57" height="27"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.088803498641304324" green="0.088803498641304324" blue="0.088803498641304324" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <state key="normal" title="Done">
@@ -43,34 +43,34 @@
                             </connections>
                         </button>
                         <view alpha="0.49999999999999961" contentMode="scaleToFill" id="rlN-S9-4ft">
-                            <rect key="frame" x="0.0" y="482" width="320" height="86"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="0.0" y="407" width="320" height="73"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view alpha="0.39999999999999963" contentMode="scaleToFill" id="7em-DT-Nxl">
-                            <rect key="frame" x="10" y="509" width="300" height="1"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <rect key="frame" x="10" y="430" width="300" height="1"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: 03/12/2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1pz-Bp-7cp">
-                            <rect key="frame" x="211" y="484" width="99" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="211" y="409" width="99" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ea7-5s-gDJ">
-                            <rect key="frame" x="10" y="539" width="290" height="21"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            <rect key="frame" x="10" y="455" width="290" height="18"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="78r-s6-HFG">
-                            <rect key="frame" x="10" y="513" width="290" height="25"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="10" y="434" width="290" height="21"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -81,7 +81,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="closeBtn" destination="VL1-Lv-oga" id="JTC-vM-6kI"/>
                 <outlet property="dimView" destination="LPc-Ve-7Dr" id="zZv-Lv-gJh"/>
@@ -91,7 +91,4 @@
             </connections>
         </view>
     </objects>
-    <resources>
-        <image name="baron_tremayne_caple__cartoon_avatar__by_barontremaynecaple-d5lruie.jpg" width="372" height="423"/>
-    </resources>
 </document>

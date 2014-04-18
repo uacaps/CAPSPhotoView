@@ -58,6 +58,10 @@
         closeBtn.clipsToBounds = YES;
         closeBtn.layer.borderWidth = 1.0;
         closeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+        
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        deviceWidth = screenRect.size.width;
+        deviceHeight = screenRect.size.height;
     }
     
     return self;
@@ -146,7 +150,7 @@
 
 - (void)handleDoubleTapToZoom:(UIPanGestureRecognizer*)recognizer
 {
-    if (imageView.frame.size.width > 320) {
+    if (imageView.frame.size.width > deviceWidth) {
         [UIView animateWithDuration:0.3
                          animations:^{
                              [imageScrollView setZoomScale:1.0 animated:YES];
@@ -158,7 +162,7 @@
         [UIView animateWithDuration:0.3
                          animations:^{
                              
-                             float scale = 568 / imageView.frame.size.height; // device height / image height
+                             float scale = deviceHeight / imageView.frame.size.height; // device height / image height
                              
                              if (scale > maxScale) {
                                  [imageScrollView setZoomScale:maxScale animated:YES];
@@ -200,7 +204,7 @@
             [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:nil cache:YES];
             [UIView setAnimationBeginsFromCurrentState:YES];
             /* Reset the frame view size*/
-            imageView.frame = CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height);//CGRectMake(0, 0, 320, 568);
+            imageView.frame = CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height);//CGRectMake(0, 0, deviceWidth, deviceHeight);
             [UIView setAnimationDelegate:self];
             /*  Call bounce animation method */
             [UIView setAnimationDidStopSelector:@selector(bounceBackToOrigin)];
@@ -250,7 +254,7 @@
 - (void)showHidePhotoDetailView
 {
     // Check if image needs to be zoomed out to original size
-    if (imageView.frame.size.width > 320) {
+    if (imageView.frame.size.width > deviceWidth) {
         [UIView animateWithDuration:0.3
                          animations:^{
                              [imageScrollView setZoomScale:1.0 animated:YES];
@@ -382,21 +386,21 @@
     
     
     // Calculate height for image in photo view
-    float scale = 320 / startImageView.image.size.width;
+    float scale = deviceWidth / startImageView.image.size.width;
     int height = startImageView.image.size.height * scale;
     
     // Accomodate long pictures
-    if (height > 568) { // height more than device height
-        scale = 568 / startImageView.image.size.height;
-        photoViewImageSize.height = 568;
+    if (height > deviceHeight) { // height more than device height
+        scale = deviceHeight / startImageView.image.size.height;
+        photoViewImageSize.height = deviceHeight;
         photoViewImageSize.width = startImageView.image.size.width * scale;
-        photoViewImageOrigin.x = (320 - photoViewImageSize.width) / 2;
+        photoViewImageOrigin.x = (deviceWidth - photoViewImageSize.width) / 2;
         photoViewImageOrigin.y = 0;
     } else {
         photoViewImageSize.height = startImageView.image.size.height * scale;
-        photoViewImageSize.width = 320;
+        photoViewImageSize.width = deviceWidth;
         photoViewImageOrigin.x = 0;
-        photoViewImageOrigin.y = (568 - photoViewImageSize.height) / 2;
+        photoViewImageOrigin.y = (deviceHeight - photoViewImageSize.height) / 2;
     }
     
     // Photo enlarge animation

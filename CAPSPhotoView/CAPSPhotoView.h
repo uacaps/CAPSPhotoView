@@ -68,6 +68,9 @@
     UIImage *photo;
     
     float maxScale;
+    
+    CGFloat deviceHeight;
+    CGFloat deviceWidth;
 }
 
 @property (weak, nonatomic) UILabel *titleLabel;
