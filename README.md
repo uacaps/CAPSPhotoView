@@ -38,6 +38,7 @@ All the classes required for CAPSPhotoView are located in the CAPSPhotoView fold
 To set up and initialize CAPSPhotoView simply use the code below replacing the parameters with your own values:
 
 ```objective-c
+// Initialize CAPSPhotoView
 CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
                                                       dateTitle:@"Date: 03/12/2014"
                                                           title:@"Title"
@@ -48,10 +49,12 @@ CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0,
 
 To open up CAPSPhotoView you have the choice of fading it in from an existing UIImageView or opening it as modal from an existing UIImageView using the code below:
 
-```smalltalk
+```objective-c
+// Fade in CAPSPhotoView
 [photoView fadeInPhotoViewFromImageView:imageView];
 ```
-```smalltalk
+```objective-c
+// Open CAPSPhotoView as modal
 [photoView openPhotoViewAsModalWithImageView:imageView];
 ```
 
