@@ -39,9 +39,9 @@ To set up and initialize CAPSPhotoView simply use the code below replacing the p
 
 ```smalltalk
 CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
-                                                          dateTitle:@"Date: 03/12/2014"
-                                                              title:@"Title"
-                                                           subtitle:@"Subtitle"];
+                                                      dateTitle:@"Date: 03/12/2014"
+                                                          title:@"Title"
+                                                       subtitle:@"Subtitle"];
 ```
 
 **Open CAPSPhotoView**
