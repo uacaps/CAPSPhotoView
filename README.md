@@ -1,6 +1,17 @@
 ## CAPSPhotoView (PRE-RELEASE)
 
-A pop-out, facebook-style photo viewer for showing an image from a UIImageView or button
+CAPSPhotoView is a pop-out, facebook-style photo viewer for showing an image. It can be opened with a fade-in animation as well as a modal animation. CAPSPhotoView can be triggered from anywhere, i.e. button, tap-gesture, etc.
+
+The following features are included in CAPSPhotoView:
+
+* Fade-in from UIImageView (supports UIImageViews with corner radius)
+* Open CAPSPhotoView with modal animation
+* Swipe up/down to close 
+* Close button
+* Close animation back to original UIImageView or off-screen for modal
+* Tap to show/hide detail view
+* Double-tap to zoom
+* Pinch to zoom
 
 ## Installation
 
