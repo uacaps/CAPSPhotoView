@@ -46,6 +46,23 @@ CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0,
 
 **Open CAPSPhotoView**
 
+To open up CAPSPhotoView you have the choice of fading it in or open it as modal using the code below:
+
+Fade-in
+```smalltalk
+CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
+                                                      dateTitle:@"Date: 03/12/2014"
+                                                          title:@"Title"
+                                                       subtitle:@"Subtitle"];
+```
+
+Modal
+```smalltalk
+CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
+                                                      dateTitle:@"Date: 03/12/2014"
+                                                          title:@"Title"
+                                                       subtitle:@"Subtitle"];
+```
 
 ## Future Work
 
