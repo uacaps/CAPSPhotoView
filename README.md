@@ -46,14 +46,11 @@ CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0,
 
 **Open CAPSPhotoView**
 
-To open up CAPSPhotoView you have the choice of fading it in or open it as modal using the code below:
+To open up CAPSPhotoView you have the choice of fading it in or opening it as modal using the code below:
 
-* Fade-in
 ```smalltalk
 [photoView fadeInPhotoViewFromImageView:imageView];
 ```
-
-* Modal
 ```smalltalk
 [photoView openPhotoViewAsModalWithImageView:imageView];
 ```
@@ -64,3 +61,4 @@ The following feature will be added in the future:
 
 * Swipe through an array of images
 * Support for collection views
+* Performance enhancements
