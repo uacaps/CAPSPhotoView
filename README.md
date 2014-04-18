@@ -67,6 +67,7 @@ The following feature will be added in the future:
 * Performance enhancements
 * Removing need for xib file
 * Support for rotation of device
+* Loading images dynamically
 
 ## License ##
 
