@@ -30,3 +30,10 @@ All the classes required for CAPSPhotoView are located in the CAPSPhotoView fold
 ## Preview
 
 ![PhotoViewPreview](https://raw.githubusercontent.com/uacaps/ResourceRepo/master/CAPSPhotoView/PhotoViewPreviewLoop.gif)
+
+## Future Work
+
+The following feature will be added in the future:
+
+* Swipe through an array of images
+* Support for collection views
