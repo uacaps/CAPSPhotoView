@@ -75,6 +75,21 @@
     [photoView fadeInPhotoViewFromImageView:self.imageView4];
 }
 
+- (IBAction)openPhotoViewAsModal:(id)sender
+{
+    // Set up photo view
+    CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
+                                                          dateTitle:@"Date: 03/12/2014"
+                                                              title:@"Title"
+                                                           subtitle:@"Subtitle"];
+    
+    // Create UIImage view (not needed in future)
+    UIImageView *modalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sign.jpg"]];
+    
+    // Open/Fade in photo view from original image
+    [photoView openPhotoViewAsModalWithImageView:modalImageView];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

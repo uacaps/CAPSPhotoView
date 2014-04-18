@@ -73,14 +73,6 @@
     imageSingleTapTouchGesture.numberOfTapsRequired = 1;
     [self addGestureRecognizer:imageSingleTapTouchGesture];
     [imageSingleTapTouchGesture setDelegate:self];
-//
-//    UITapGestureRecognizer *imageViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
-//    [imageView addGestureRecognizer:imageViewTouchGesture];
-//    [imageViewTouchGesture setDelegate:self];
-//    
-//    UITapGestureRecognizer *scrollViewTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
-//    [imageScrollView addGestureRecognizer:scrollViewTouchGesture];
-//    [scrollViewTouchGesture setDelegate:self];
     
     UITapGestureRecognizer *imageDoubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapToZoom:)];
     imageDoubleTapGesture.numberOfTapsRequired = 2;
@@ -162,12 +154,16 @@
         [UIView animateWithDuration:0.3
                          animations:^{
                              
-                             float scale = deviceHeight / imageView.frame.size.height; // device height / image height
+                             CGFloat verticalScale = deviceHeight / imageView.frame.size.height;
+                             CGFloat horizontalScale = deviceWidth / imageView.frame.size.width;
                              
-                             if (scale > maxScale) {
-                                 [imageScrollView setZoomScale:maxScale animated:YES];
+                             // set scale to 2 if image already spans entire
+                             if (verticalScale == 1.0 && horizontalScale == 1.0) {
+                                 [imageScrollView setZoomScale:2.0 animated:YES];
+                             } else if (horizontalScale == 1.0) {
+                                 [imageScrollView setZoomScale:verticalScale animated:YES];
                              } else {
-                                 [imageScrollView setZoomScale:scale animated:YES];
+                                 [imageScrollView setZoomScale:horizontalScale animated:YES];
                              }
                              
                              // Hide detail view
@@ -210,23 +206,42 @@
             [UIView setAnimationDidStopSelector:@selector(bounceBackToOrigin)];
             [UIView commitAnimations];
         } else {
-            photoDetailView.alpha = 0;
             
-            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
-            animation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionLinear];
-            animation.fromValue = [NSNumber numberWithFloat:0.0f];
-            animation.toValue = [NSNumber numberWithFloat:startPhotoRadius];
-            animation.duration = 0.4;
-            [imageView.layer setCornerRadius:startPhotoRadius];
-            [imageView.layer addAnimation:animation forKey:@"cornerRadius"];
+            if (isModal) {
+                
+                CGFloat endY;
+                
+                if (imageView.frame.origin.y < photoViewImageOrigin.y - 100) {
+                    endY = 0 - photoViewImageSize.height;
+                } else {
+                    endY = deviceHeight;
+                }
+                
+                [UIView animateWithDuration:0.3
+                                 animations:^{
+                                     dimView.alpha = 0;
+                                     imageView.frame = CGRectMake(imageView.frame.origin.x, endY, imageView.frame.size.width, imageView.frame.size.height);
+                                 }];
+            } else {
+                photoDetailView.alpha = 0;
+                
+                CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
+                animation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionLinear];
+                animation.fromValue = [NSNumber numberWithFloat:0.0f];
+                animation.toValue = [NSNumber numberWithFloat:startPhotoRadius];
+                animation.duration = 0.4;
+                [imageView.layer setCornerRadius:startPhotoRadius];
+                [imageView.layer addAnimation:animation forKey:@"cornerRadius"];
+                
+                [UIView animateWithDuration:0.4
+                                 animations:^{
+                                     dimView.alpha = 0;
+                                     imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
+                                 }];
+                
+                [self performSelector:@selector(toggleOriginalImageView) withObject:nil afterDelay:0.4];
+            }
             
-            [UIView animateWithDuration:0.4
-                             animations:^{
-                                 dimView.alpha = 0;
-                                 imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
-                             }];
-            
-            [self performSelector:@selector(toggleOriginalImageView) withObject:nil afterDelay:0.4];
             [self performSelector:@selector(removeSelfFromSuperview) withObject:nil afterDelay:0.4];
             [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.1];
         }
@@ -296,23 +311,31 @@
 
 - (IBAction)tempCloseBtn:(id)sender
 {
-    photoDetailView.alpha = 0;
+    if (isModal) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.frame = CGRectMake(self.frame.origin.x, deviceHeight, self.frame.size.width, self.frame.size.height);
+                         }];
+    } else {
+        photoDetailView.alpha = 0;
+        
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
+        animation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionLinear];
+        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+        animation.toValue = [NSNumber numberWithFloat:startPhotoRadius];
+        animation.duration = 0.4;
+        [imageView.layer setCornerRadius:startPhotoRadius];
+        [imageView.layer addAnimation:animation forKey:@"cornerRadius"];
+        
+        [UIView animateWithDuration:0.4
+                         animations:^{
+                             dimView.alpha = 0;
+                             imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
+                         }];
+        
+        [self performSelector:@selector(toggleOriginalImageView) withObject:nil afterDelay:0.4];
+    }
     
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
-    animation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionLinear];
-    animation.fromValue = [NSNumber numberWithFloat:0.0f];
-    animation.toValue = [NSNumber numberWithFloat:startPhotoRadius];
-    animation.duration = 0.4;
-    [imageView.layer setCornerRadius:startPhotoRadius];
-    [imageView.layer addAnimation:animation forKey:@"cornerRadius"];
-    
-    [UIView animateWithDuration:0.4
-                       animations:^{
-                                dimView.alpha = 0;                                                                                                                                                     
-                                imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
-                          }];
-    
-    [self performSelector:@selector(toggleOriginalImageView) withObject:nil afterDelay:0.4];
     [self performSelector:@selector(removeSelfFromSuperview) withObject:nil afterDelay:0.4];
     [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.1];
 }
@@ -353,6 +376,9 @@
 // Start showing Photoview
 - (void)fadeInPhotoViewFromImageView:(UIImageView *)imgView
 {
+    // Set isModal flag to NO
+    isModal = NO;
+    
     // Use original image view to make effect of animation better by hiding it
     imgView.clipsToBounds = YES;
     startImageView = imgView;
@@ -411,9 +437,10 @@
                          [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
                      }];
 
-    // default max scale
+    // Default max scale
     maxScale = 4.0;
     
+    // Set up scroll view
     imageScrollView.maximumZoomScale = maxScale;
     imageScrollView.contentSize = imageView.frame.size;
     imageScrollView.delegate = self;
@@ -421,6 +448,64 @@
     [self addGestureRecognizer:imageScrollView.pinchGestureRecognizer];
     
     [self performSelector:@selector(showHidePhotoDetailView) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.25];
+}
+
+- (void)openPhotoViewAsModalWithImageView:(UIImageView *)imgView
+{
+    // Set isModal flag to YES
+    isModal = YES;
+    
+    // Use original image view to make effect of animation better by hiding it
+    imgView.clipsToBounds = YES;
+    startImageView = imgView;
+    
+    [self setImageInfoFromImageView:startImageView];
+
+    CGRect oldFrame = self.frame;
+    
+    self.frame = CGRectMake(self.frame.origin.x, deviceHeight, self.frame.size.width, self.frame.size.height);
+    
+    [[[[UIApplication sharedApplication] windows] lastObject] addSubview:self];
+    [[[[UIApplication sharedApplication] windows] lastObject] bringSubviewToFront:self];
+    
+    // Calculate height for image in photo view
+    float scale = deviceWidth / startImageView.image.size.width;
+    int height = startImageView.image.size.height * scale;
+    
+    // Accomodate long pictures
+    if (height > deviceHeight) { // height more than device height
+        scale = deviceHeight / startImageView.image.size.height;
+        photoViewImageSize.height = deviceHeight;
+        photoViewImageSize.width = startImageView.image.size.width * scale;
+        photoViewImageOrigin.x = (deviceWidth - photoViewImageSize.width) / 2;
+        photoViewImageOrigin.y = 0;
+    } else {
+        photoViewImageSize.height = startImageView.image.size.height * scale;
+        photoViewImageSize.width = deviceWidth;
+        photoViewImageOrigin.x = 0;
+        photoViewImageOrigin.y = (deviceHeight - photoViewImageSize.height) / 2;
+    }
+    
+    // Set image view frame
+    [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
+    
+    // Modal animation
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         [self setFrame:oldFrame];
+                     }];
+    
+    // Default max scale
+    maxScale = 4.0;
+    
+    // Set up scroll view
+    imageScrollView.maximumZoomScale = maxScale;
+    imageScrollView.contentSize = imageView.frame.size;
+    imageScrollView.delegate = self;
+    
+    [self addGestureRecognizer:imageScrollView.pinchGestureRecognizer];
+    
     [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.25];
 }
 

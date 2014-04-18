@@ -68,6 +68,16 @@
                                     <action selector="openPhotoView4:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TD1-UR-FM2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ziH-ig-gNZ">
+                                <rect key="frame" x="49" y="518" width="223" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Open CAPSPhotoView as Modal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openPhotoViewAsModal:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="E0D-sx-6dl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

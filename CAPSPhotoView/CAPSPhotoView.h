@@ -71,6 +71,8 @@
     
     CGFloat deviceHeight;
     CGFloat deviceWidth;
+    
+    BOOL isModal;
 }
 
 @property (weak, nonatomic) UILabel *titleLabel;
@@ -84,6 +86,8 @@
 - (void)setFrameForImage:(CGRect)frame;
 
 - (void)fadeInPhotoViewFromImageView:(UIImageView *)imgView;
+
+- (void)openPhotoViewAsModalWithImageView:(UIImageView *)imgView;
 
 - (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle;
 
