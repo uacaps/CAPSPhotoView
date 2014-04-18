@@ -66,6 +66,7 @@ The following feature will be added in the future:
 * Support for collection views
 * Performance enhancements
 * Removing need for xib file
+* Support for rotation of device
 
 ## License ##
 
