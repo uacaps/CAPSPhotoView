@@ -71,7 +71,7 @@ The following feature will be added in the future:
 
 ## License ##
 
-Copyright (c) 2012 The Board of Trustees of The University of Alabama
+Copyright (c) 2014 The Board of Trustees of The University of Alabama
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
