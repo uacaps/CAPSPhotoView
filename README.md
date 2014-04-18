@@ -46,7 +46,7 @@ CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0,
 
 **Open CAPSPhotoView**
 
-To open up CAPSPhotoView you have the choice of fading it in or opening it as modal using the code below:
+To open up CAPSPhotoView you have the choice of fading it in from an existing UIImageView or opening it as modal from an existing UIImageView using the code below:
 
 ```smalltalk
 [photoView fadeInPhotoViewFromImageView:imageView];
