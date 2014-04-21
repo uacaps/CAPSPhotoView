@@ -162,6 +162,9 @@
                              // Show detail view
                              photoDetailView.alpha = 1;
                          }];
+        
+        closeBtn.enabled = YES;
+        [photoDetailView setUserInteractionEnabled:YES];
     } else {
         [UIView animateWithDuration:0.3
                          animations:^{
@@ -181,6 +184,8 @@
                              // Hide detail view
                              photoDetailView.alpha = 0;
                          }];
+        closeBtn.enabled = NO;
+        [photoDetailView setUserInteractionEnabled:NO];
     }
 }
 
@@ -288,6 +293,9 @@
                              
                              photoDetailView.alpha = 1;
                          }];
+        
+        closeBtn.enabled = YES;
+        [photoDetailView setUserInteractionEnabled:YES];
     } else {
         // Show or hide detail view
         if (photoDetailView.alpha == 0) {
@@ -295,11 +303,17 @@
                              animations:^{
                                  photoDetailView.alpha = 1;
                              }];
+            
+            closeBtn.enabled = YES;
+            [photoDetailView setUserInteractionEnabled:YES];
         } else {
             [UIView animateWithDuration:0.3
                              animations:^{
                                  photoDetailView.alpha = 0;
                              }];
+            
+            closeBtn.enabled = NO;
+            [photoDetailView setUserInteractionEnabled:NO];
         }
     }
 }
@@ -323,6 +337,9 @@
 
 - (void)tappedCloseButton
 {
+    closeBtn.enabled = NO;
+    [photoDetailView setUserInteractionEnabled:NO];
+    
     if (isModal) {
         [UIView animateWithDuration:0.3
                          animations:^{
@@ -390,6 +407,9 @@
 {
     // Set isModal flag to NO
     isModal = NO;
+    
+    closeBtn.enabled = YES;
+    [photoDetailView setUserInteractionEnabled:YES];
     
     // Use original image view to make effect of animation better by hiding it
     imgView.clipsToBounds = YES;
@@ -468,11 +488,19 @@
     // Set isModal flag to YES
     isModal = YES;
     
+    closeBtn.enabled = YES;
+    [photoDetailView setUserInteractionEnabled:YES];
+    
+    [dimView setAlpha:1];
+    [photoDetailView setAlpha:1];
+    
     // Use original image view to make effect of animation better by hiding it
     imgView.clipsToBounds = YES;
     startImageView = imgView;
     
     [self setImageInfoFromImageView:startImageView];
+    
+    imageView.layer.cornerRadius = startPhotoRadius;
 
     CGRect oldFrame = self.frame;
     

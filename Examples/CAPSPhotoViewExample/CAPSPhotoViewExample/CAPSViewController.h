@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CAPSPhotoView.h"
 
 @interface CAPSViewController : UIViewController
+{
+    CAPSPhotoView *photoView;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView2;

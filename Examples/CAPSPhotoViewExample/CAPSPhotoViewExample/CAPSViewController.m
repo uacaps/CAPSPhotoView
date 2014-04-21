@@ -24,66 +24,40 @@
     self.imageView2.layer.cornerRadius = self.imageView2.frame.size.height / 2;
     self.imageView2.clipsToBounds = YES;
     
-//    self.imageView.clipsToBounds = YES;
+    // Set up photo view
+    photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
+                                           dateTitle:@"Date: 03/12/2014"
+                                               title:@"Title"
+                                            subtitle:@"Subtitle"];
 }
 
 - (IBAction)openPhotoView:(id)sender
 {
-    // Set up photo view
-    CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
-                                                          dateTitle:@"Date: 03/12/2014"
-                                                              title:@"Title"
-                                                           subtitle:@"Subtitle"];
-    
     // Open/Fade in photo view from original image view
     [photoView fadeInPhotoViewFromImageView:self.imageView];
 }
 
 - (IBAction)openPhotoView2:(id)sender
 {
-    // Set up photo view
-    CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
-                                                          dateTitle:@"Date: 03/12/2014"
-                                                              title:@"Title"
-                                                           subtitle:@"Subtitle"];
-    
     // Open/Fade in photo view from original image view
     [photoView fadeInPhotoViewFromImageView:self.imageView2];
 }
 
 - (IBAction)openPhotoView3:(id)sender
 {
-    // Set up photo view
-    CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
-                                                          dateTitle:@"Date: 03/12/2014"
-                                                              title:@"Title"
-                                                           subtitle:@"Subtitle"];
-    
     // Open/Fade in photo view from original image view
     [photoView fadeInPhotoViewFromImageView:self.imageView3];
 }
 
 - (IBAction)openPhotoView4:(id)sender
 {
-    // Set up photo view
-    CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
-                                                          dateTitle:@"Date: 03/12/2014"
-                                                              title:@"Title"
-                                                           subtitle:@"Subtitle"];
-    
     // Open/Fade in photo view from original image view
     [photoView fadeInPhotoViewFromImageView:self.imageView4];
 }
 
 - (IBAction)openPhotoViewAsModal:(id)sender
 {
-    // Set up photo view
-    CAPSPhotoView *photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
-                                                          dateTitle:@"Date: 03/12/2014"
-                                                              title:@"Title"
-                                                           subtitle:@"Subtitle"];
-    
-    // Create UIImage view (not needed in future)
+    // Create UIImage view
     UIImageView *modalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sign.jpg"]];
     
     // Open photo view as modal with image view
