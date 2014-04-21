@@ -25,7 +25,6 @@ All the classes required for CAPSPhotoView are located in the CAPSPhotoView fold
 
 * <code>CAPSPhotoView.h</code>
 * <code>CAPSPhotoView.h</code>
-* <code>CAPSPhotoView.xib</code>
 
 ## Preview
 
@@ -65,7 +64,6 @@ The following feature will be added in the future:
 * Swipe through an array of images
 * Support for collection views
 * Performance enhancements
-* Removing need for xib file
 * Support for rotation of device
 * Loading images dynamically
 
