@@ -37,47 +37,41 @@
 
 @interface CAPSPhotoView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate>
 {
-    __weak IBOutlet UIImageView *imageView;
+    UIView *dimView;
     
-    __weak IBOutlet UIView *dimView;
+    UIScrollView *imageScrollView;
+    UIImageView *imageView;
     
-    __weak IBOutlet UIView *photoDetailView;
+    UIView *photoDetailView;
+    UIView *photoDetailGestureView;
+    UILabel *titleLabel;
+    UILabel *subtitleLabel;
+    UILabel *dateTitleLabel;
+    UIButton *closeBtn;
+    UIView *detailBackground;
+    UIView *detailLine;
     
-    __weak IBOutlet UIButton *closeBtn;
-    
-    __weak IBOutlet UIScrollView *imageScrollView;
+    UIImageView *startImageView;
+    UIImage *photo;
     
     CGPoint photoOrigin;
-    
-    CGSize photoSize;
-    
     CGPoint photoViewImageOrigin;
     
+    CGSize photoSize;
     CGSize photoViewImageSize;
     
     CGFloat startPhotoRadius;
-    
-    NSString *photoID;
-    
-    BOOL hidden;
-    
-    BOOL originalImageViewHidden;
-    
-    UIImageView *startImageView;
-    
-    UIImage *photo;
-    
-    float maxScale;
-    
     CGFloat deviceHeight;
     CGFloat deviceWidth;
     
+    float maxScale;
+    
+    BOOL hidden;
+    BOOL originalImageViewHidden;
     BOOL isModal;
 }
 
-@property (weak, nonatomic) UILabel *titleLabel;
-@property (weak, nonatomic) UILabel *subtitleLabel;
-@property (weak, nonatomic) UILabel *dateTitleLabel;
+- (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle;
 
 - (void)setDimViewAlpha:(CGFloat)alpha;
 
@@ -88,9 +82,5 @@
 - (void)fadeInPhotoViewFromImageView:(UIImageView *)imgView;
 
 - (void)openPhotoViewAsModalWithImageView:(UIImageView *)imgView;
-
-- (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle;
-
-- (IBAction)tempCloseBtn:(id)sender;
 
 @end

@@ -40,28 +40,22 @@
 // Constructor for using UIImage to set image
 - (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle
 {
-    self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([CAPSPhotoView class]) owner:nil options:nil][0];
-    
-    if (self) {
+    self = [super init];
+	if (self != nil) {
         // Initialization code
+        self.frame = frame;
         
         hidden = YES;
         originalImageViewHidden = YES;
         
-        [self.dateTitleLabel setText:dateTitle];
-        [self.titleLabel setText:title];
-        [self.subtitleLabel setText:subtitle];
+        // Set up UI
+        [self buildUI];
+        
+        [dateTitleLabel setText:dateTitle];
+        [titleLabel setText:title];
+        [subtitleLabel setText:subtitle];
         
         [self buildGestureRecognizers];
-        
-        closeBtn.layer.cornerRadius = 3;
-        closeBtn.clipsToBounds = YES;
-        closeBtn.layer.borderWidth = 1.0;
-        closeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-        
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        deviceWidth = screenRect.size.width;
-        deviceHeight = screenRect.size.height;
     }
     
     return self;
@@ -69,34 +63,52 @@
 
 - (void)buildGestureRecognizers
 {
-    UITapGestureRecognizer *imageSingleTapTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
-    imageSingleTapTouchGesture.numberOfTapsRequired = 1;
-    [self addGestureRecognizer:imageSingleTapTouchGesture];
-    [imageSingleTapTouchGesture setDelegate:self];
+    // Set up tap gestures for when detail view is shown
+    UITapGestureRecognizer *imageSingleTapTouchGestureDetailView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
+    imageSingleTapTouchGestureDetailView.numberOfTapsRequired = 1;
+    [photoDetailGestureView addGestureRecognizer:imageSingleTapTouchGestureDetailView];
+    [imageSingleTapTouchGestureDetailView setDelegate:self];
     
-    UITapGestureRecognizer *imageDoubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapToZoom:)];
-    imageDoubleTapGesture.numberOfTapsRequired = 2;
-    [self addGestureRecognizer:imageDoubleTapGesture];
-    [imageDoubleTapGesture setDelegate:self];
+    UITapGestureRecognizer *imageDoubleTapGestureDetailView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapToZoom:)];
+    imageDoubleTapGestureDetailView.numberOfTapsRequired = 2;
+    [photoDetailGestureView addGestureRecognizer:imageDoubleTapGestureDetailView];
+    [imageDoubleTapGestureDetailView setDelegate:self];
     
-    [imageSingleTapTouchGesture requireGestureRecognizerToFail:imageDoubleTapGesture];
+    [imageSingleTapTouchGestureDetailView requireGestureRecognizerToFail:imageDoubleTapGestureDetailView];
     
+    // Set up tap gestures on image
+    UITapGestureRecognizer *imageSingleTapTouchGestureImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
+    imageSingleTapTouchGestureImage.numberOfTapsRequired = 1;
+    [imageView addGestureRecognizer:imageSingleTapTouchGestureImage];
+    [imageSingleTapTouchGestureImage setDelegate:self];
+    
+    UITapGestureRecognizer *imageDoubleTapGestureImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapToZoom:)];
+    imageDoubleTapGestureImage.numberOfTapsRequired = 2;
+    [imageView addGestureRecognizer:imageDoubleTapGestureImage];
+    [imageDoubleTapGestureImage setDelegate:self];
+    
+    [imageSingleTapTouchGestureImage requireGestureRecognizerToFail:imageDoubleTapGestureImage];
+    
+    // Set up tap gestures on scrollview
+    UITapGestureRecognizer *imageSingleTapTouchGestureScrollView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHidePhotoDetailView)];
+    imageSingleTapTouchGestureScrollView.numberOfTapsRequired = 1;
+    [imageScrollView addGestureRecognizer:imageSingleTapTouchGestureScrollView];
+    [imageSingleTapTouchGestureScrollView setDelegate:self];
+    
+    UITapGestureRecognizer *imageDoubleTapGestureImageScrollView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapToZoom:)];
+    imageDoubleTapGestureImageScrollView.numberOfTapsRequired = 2;
+    [imageScrollView addGestureRecognizer:imageDoubleTapGestureImageScrollView];
+    [imageDoubleTapGestureImageScrollView setDelegate:self];
+    
+    [imageSingleTapTouchGestureScrollView requireGestureRecognizerToFail:imageDoubleTapGestureImageScrollView];
+    
+    // Set up pan gesture for when detail view is present
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [panGesture setDelaysTouchesBegan:TRUE];
     [panGesture setDelaysTouchesEnded:TRUE];
     [panGesture setCancelsTouchesInView:TRUE];
-    [photoDetailView addGestureRecognizer:panGesture];
+    [photoDetailGestureView addGestureRecognizer:panGesture];
     [panGesture setDelegate:self];
-    
-//    [self addGestureRecognizer:imageScrollView.pinchGestureRecognizer];
-//    [pinchRecognizer setDelegate:imageScrollView];
-//
-//    UIPanGestureRecognizer *panGesture2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-//    [panGesture2 setDelaysTouchesBegan:TRUE];
-//    [panGesture2 setDelaysTouchesEnded:TRUE];
-//    [panGesture2 setCancelsTouchesInView:TRUE];
-//    [imageView addGestureRecognizer:panGesture2];
-//    [panGesture2 setDelegate:self];
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -309,7 +321,7 @@
     hidden = !hidden;
 }
 
-- (IBAction)tempCloseBtn:(id)sender
+- (void)tappedCloseButton
 {
     if (isModal) {
         [UIView animateWithDuration:0.3
@@ -507,6 +519,101 @@
     [self addGestureRecognizer:imageScrollView.pinchGestureRecognizer];
     
     [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.25];
+}
+
+- (void)buildUI
+{
+    // Set device height and width variables
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    deviceWidth = screenRect.size.width;
+    deviceHeight = screenRect.size.height;
+    
+    // Set up dim view
+    dimView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, deviceWidth, deviceHeight)];
+    dimView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    dimView.backgroundColor = [UIColor blackColor];
+    dimView.userInteractionEnabled = YES;
+    dimView.alpha = 1;
+    [self addSubview:dimView];
+    
+    // Set up scroll view
+    imageScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, deviceWidth, deviceHeight)];
+    imageScrollView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    [imageScrollView setBounces:NO];
+    [imageScrollView setShowsHorizontalScrollIndicator:NO];
+    [imageScrollView setShowsVerticalScrollIndicator:NO];
+    [imageScrollView setScrollEnabled:YES];
+    imageScrollView.backgroundColor = [UIColor clearColor];
+    [self addSubview:imageScrollView];
+    
+    // Set up image view adn add to scroll view
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, deviceWidth, deviceHeight)];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.backgroundColor = [UIColor clearColor];
+    [imageScrollView addSubview:imageView];
+    
+    // Set up detail view
+    photoDetailView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, deviceWidth, deviceHeight)];
+    photoDetailView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    photoDetailView.backgroundColor = [UIColor clearColor];
+    photoDetailView.userInteractionEnabled = YES;
+    [photoDetailView setContentMode:UIViewContentModeScaleToFill];
+    [self addSubview:photoDetailView];
+    
+    // Set up detail view components
+    photoDetailGestureView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, deviceWidth, deviceHeight)];
+    photoDetailGestureView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    photoDetailGestureView.backgroundColor = [UIColor clearColor];
+    photoDetailGestureView.userInteractionEnabled = YES;
+    [photoDetailView addSubview:photoDetailGestureView];
+    
+    closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    closeBtn.frame = CGRectMake(253, 11, 57, 27);
+    closeBtn.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+    closeBtn.backgroundColor = [UIColor colorWithRed:23.0/255.0 green:23.0/255.0 blue:23.0/255.0 alpha:0.65];
+    closeBtn.layer.cornerRadius = 3;
+    closeBtn.clipsToBounds = YES;
+    closeBtn.layer.borderWidth = 1.0;
+    closeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    closeBtn.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14.0f];
+    [closeBtn setTitle:@"Done" forState:UIControlStateNormal];
+    [closeBtn addTarget:self action:@selector(tappedCloseButton) forControlEvents:UIControlEventTouchUpInside];
+    [photoDetailView addSubview:closeBtn];
+    
+    detailBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 482, 320, 86)];
+    detailBackground.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    detailBackground.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
+    [photoDetailView addSubview:detailBackground];
+    
+    detailLine = [[UIView alloc] initWithFrame:CGRectMake(10, 509, 300, 1)];
+    detailLine.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    detailLine.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:0.4];
+    [photoDetailView addSubview:detailLine];
+    
+    dateTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(211, 484, 99, 21)];
+    dateTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    dateTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13.0f];
+    dateTitleLabel.backgroundColor = [UIColor clearColor];
+    dateTitleLabel.textColor = [UIColor whiteColor];
+    dateTitleLabel.textAlignment = NSTextAlignmentRight;
+    [photoDetailView addSubview:dateTitleLabel];
+    
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 513, 300, 25)];
+    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+    titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:19.0f];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    [photoDetailView addSubview:titleLabel];
+    
+    subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 539, 300, 21)];
+    subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+    subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
+    subtitleLabel.backgroundColor = [UIColor clearColor];
+    subtitleLabel.textColor = [UIColor whiteColor];
+    subtitleLabel.textAlignment = NSTextAlignmentLeft;
+    [photoDetailView addSubview:subtitleLabel];
 }
 
 @end
