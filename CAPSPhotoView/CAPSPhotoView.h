@@ -73,12 +73,6 @@
 
 - (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle;
 
-- (void)setDimViewAlpha:(CGFloat)alpha;
-
-- (void)setPhotoDetailViewAlpha:(CGFloat)alpha;
-
-- (void)setFrameForImage:(CGRect)frame;
-
 - (void)fadeInPhotoViewFromImageView:(UIImageView *)imgView;
 
 - (void)openPhotoViewAsModalWithImageView:(UIImageView *)imgView;
