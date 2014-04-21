@@ -53,6 +53,9 @@ To open up CAPSPhotoView you have the choice of fading it in from an existing UI
 [photoView fadeInPhotoViewFromImageView:imageView];
 ```
 ```objective-c
+// Create UIImage view
+UIImageView *modalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"photo.jpg"]];
+
 // Open CAPSPhotoView as modal
 [photoView openPhotoViewAsModalWithImageView:imageView];
 ```
