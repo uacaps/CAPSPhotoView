@@ -396,7 +396,8 @@
     // Get parameters from start image view
     
     // TODO: translate points to window
-    CGPoint origin = [imgView convertPoint:imgView.frame.origin toView:nil];
+//    CGPoint origin = [imgView convertPoint:imgView.frame.origin toView:nil];
+    CGPoint origin = [imgView convertPoint:imgView.frame.origin fromView:imgView.superview];
     
     photoOrigin = origin;
     photoSize = imgView.frame.size;
