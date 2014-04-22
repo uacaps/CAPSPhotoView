@@ -41,6 +41,7 @@
 - (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle
 {
     self = [super init];
+    
 	if (self != nil) {
         // Initialization code
         self.frame = frame;
@@ -56,6 +57,9 @@
         [subtitleLabel setText:subtitle];
         
         [self buildGestureRecognizers];
+        
+        // Default settings
+        _bounceRange = 100;
     }
     
     return self;
@@ -120,10 +124,10 @@
 {
     UIView *subView = [scrollView.subviews objectAtIndex:0];
     
-    CGFloat offsetX = (scrollView.bounds.size.width > scrollView.contentSize.width)?
+    CGFloat offsetX = (scrollView.bounds.size.width > scrollView.contentSize.width) ?
     (scrollView.bounds.size.width - scrollView.contentSize.width) * 0.5 : 0.0;
     
-    CGFloat offsetY = (scrollView.bounds.size.height > scrollView.contentSize.height)?
+    CGFloat offsetY = (scrollView.bounds.size.height > scrollView.contentSize.height) ? 
     (scrollView.bounds.size.height - scrollView.contentSize.height) * 0.5 : 0.0;
     
     subView.center = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX,
@@ -152,7 +156,7 @@
                      }];
 }
 
-- (void)handleDoubleTapToZoom:(UIPanGestureRecognizer*)recognizer
+- (void)handleDoubleTapToZoom:(UIPanGestureRecognizer *)recognizer
 {
     if (imageView.frame.size.width > deviceWidth) {
         [UIView animateWithDuration:0.3
@@ -190,7 +194,7 @@
 }
 
 // Swipe photo up or down to close
-- (void)handlePan:(UIPanGestureRecognizer*)recognizer
+- (void)handlePan:(UIPanGestureRecognizer *)recognizer
 {
     [UIView animateWithDuration:0.2
                      animations:^{
@@ -209,9 +213,9 @@
     dimView.alpha = (rangeMax - ABS(startImageViewY - imageView.center.y)) / rangeMax;
     
     // Close photo view or bounce back depending on how far picture got swiped up/down
-    if(recognizer.state == UIGestureRecognizerStateEnded){
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
     
-        if (imageView.frame.origin.y > photoViewImageOrigin.y - 100 && imageView.frame.origin.y < photoViewImageOrigin.y + 100) {
+        if (imageView.frame.origin.y > photoViewImageOrigin.y - _bounceRange && imageView.frame.origin.y < photoViewImageOrigin.y + _bounceRange) {
             [UIView beginAnimations:@"RIGHT-WITH-RIGHT" context:NULL];
             [UIView setAnimationDuration:0.2];
             [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:nil cache:YES];

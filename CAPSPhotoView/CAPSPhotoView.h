@@ -77,4 +77,6 @@
 
 - (void)openPhotoViewAsModalWithImageView:(UIImageView *)imgView;
 
+@property float bounceRange;
+
 @end
