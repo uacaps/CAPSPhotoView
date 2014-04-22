@@ -394,7 +394,11 @@
 - (void)setImageInfoFromImageView:(UIImageView *)imgView
 {
     // Get parameters from start image view
-    photoOrigin = imgView.frame.origin;
+    
+    // TODO: translate points to window
+    CGPoint origin = [imgView convertPoint:imgView.frame.origin toView:nil];
+    
+    photoOrigin = origin;
     photoSize = imgView.frame.size;
     startPhotoRadius = imgView.layer.cornerRadius;
     photo = imgView.image;

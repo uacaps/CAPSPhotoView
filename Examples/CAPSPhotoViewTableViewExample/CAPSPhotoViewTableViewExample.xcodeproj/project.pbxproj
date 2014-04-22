@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9EB2A0C41906B8D600D202E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A0C31906B8D600D202E9 /* Foundation.framework */; };
+		9EB2A0C61906B8D600D202E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A0C51906B8D600D202E9 /* CoreGraphics.framework */; };
+		9EB2A0C81906B8D600D202E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A0C71906B8D600D202E9 /* UIKit.framework */; };
+		9EB2A0CE1906B8D600D202E9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A0CC1906B8D600D202E9 /* InfoPlist.strings */; };
+		9EB2A0D01906B8D600D202E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A0CF1906B8D600D202E9 /* main.m */; };
+		9EB2A0D41906B8D600D202E9 /* CAPSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A0D31906B8D600D202E9 /* CAPSAppDelegate.m */; };
+		9EB2A0D71906B8D600D202E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A0D51906B8D600D202E9 /* Main.storyboard */; };
+		9EB2A0DC1906B8D600D202E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A0DB1906B8D600D202E9 /* Images.xcassets */; };
+		9EB2A0E31906B8D700D202E9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A0E21906B8D700D202E9 /* XCTest.framework */; };
+		9EB2A0E41906B8D700D202E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A0C31906B8D600D202E9 /* Foundation.framework */; };
+		9EB2A0E51906B8D700D202E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB2A0C71906B8D600D202E9 /* UIKit.framework */; };
+		9EB2A0ED1906B8D700D202E9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A0EB1906B8D700D202E9 /* InfoPlist.strings */; };
+		9EB2A0EF1906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A0EE1906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests.m */; };
+		9EB2A0FB1906B90A00D202E9 /* CAPSPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A0FA1906B90A00D202E9 /* CAPSPhotoView.m */; };
+		9EB2A0FE1906B96400D202E9 /* CAPSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A0FD1906B96400D202E9 /* CAPSTableViewController.m */; };
+		9EB2A1031906B9DB00D202E9 /* CAPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2A1011906B9DB00D202E9 /* CAPSTableViewCell.m */; };
+		9EB2A1041906B9DB00D202E9 /* CAPSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A1021906B9DB00D202E9 /* CAPSTableViewCell.xib */; };
+		9EB2A1061906BC1800D202E9 /* sign.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EB2A1051906BC1800D202E9 /* sign.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9EB2A0E61906B8D700D202E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9EB2A0B81906B8D600D202E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9EB2A0BF1906B8D600D202E9;
+			remoteInfo = CAPSPhotoViewTableViewExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9EB2A0C01906B8D600D202E9 /* CAPSPhotoViewTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAPSPhotoViewTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EB2A0C31906B8D600D202E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9EB2A0C51906B8D600D202E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9EB2A0C71906B8D600D202E9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9EB2A0CB1906B8D600D202E9 /* CAPSPhotoViewTableViewExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CAPSPhotoViewTableViewExample-Info.plist"; sourceTree = "<group>"; };
+		9EB2A0CD1906B8D600D202E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9EB2A0CF1906B8D600D202E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9EB2A0D11906B8D600D202E9 /* CAPSPhotoViewTableViewExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAPSPhotoViewTableViewExample-Prefix.pch"; sourceTree = "<group>"; };
+		9EB2A0D21906B8D600D202E9 /* CAPSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPSAppDelegate.h; sourceTree = "<group>"; };
+		9EB2A0D31906B8D600D202E9 /* CAPSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPSAppDelegate.m; sourceTree = "<group>"; };
+		9EB2A0D61906B8D600D202E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9EB2A0DB1906B8D600D202E9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9EB2A0E11906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAPSPhotoViewTableViewExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EB2A0E21906B8D700D202E9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9EB2A0EA1906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CAPSPhotoViewTableViewExampleTests-Info.plist"; sourceTree = "<group>"; };
+		9EB2A0EC1906B8D700D202E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9EB2A0EE1906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPSPhotoViewTableViewExampleTests.m; sourceTree = "<group>"; };
+		9EB2A0F91906B90A00D202E9 /* CAPSPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAPSPhotoView.h; path = ../../../CAPSPhotoView/CAPSPhotoView.h; sourceTree = "<group>"; };
+		9EB2A0FA1906B90A00D202E9 /* CAPSPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAPSPhotoView.m; path = ../../../CAPSPhotoView/CAPSPhotoView.m; sourceTree = "<group>"; };
+		9EB2A0FC1906B96400D202E9 /* CAPSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSTableViewController.h; sourceTree = "<group>"; };
+		9EB2A0FD1906B96400D202E9 /* CAPSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSTableViewController.m; sourceTree = "<group>"; };
+		9EB2A1001906B9DB00D202E9 /* CAPSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSTableViewCell.h; sourceTree = "<group>"; };
+		9EB2A1011906B9DB00D202E9 /* CAPSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSTableViewCell.m; sourceTree = "<group>"; };
+		9EB2A1021906B9DB00D202E9 /* CAPSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CAPSTableViewCell.xib; sourceTree = "<group>"; };
+		9EB2A1051906BC1800D202E9 /* sign.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sign.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9EB2A0BD1906B8D600D202E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A0C61906B8D600D202E9 /* CoreGraphics.framework in Frameworks */,
+				9EB2A0C81906B8D600D202E9 /* UIKit.framework in Frameworks */,
+				9EB2A0C41906B8D600D202E9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EB2A0DE1906B8D700D202E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A0E31906B8D700D202E9 /* XCTest.framework in Frameworks */,
+				9EB2A0E51906B8D700D202E9 /* UIKit.framework in Frameworks */,
+				9EB2A0E41906B8D700D202E9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9EB2A0B71906B8D600D202E9 = {
+			isa = PBXGroup;
+			children = (
+				9EB2A0C91906B8D600D202E9 /* CAPSPhotoViewTableViewExample */,
+				9EB2A0E81906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests */,
+				9EB2A0C21906B8D600D202E9 /* Frameworks */,
+				9EB2A0C11906B8D600D202E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9EB2A0C11906B8D600D202E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A0C01906B8D600D202E9 /* CAPSPhotoViewTableViewExample.app */,
+				9EB2A0E11906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9EB2A0C21906B8D600D202E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A0C31906B8D600D202E9 /* Foundation.framework */,
+				9EB2A0C51906B8D600D202E9 /* CoreGraphics.framework */,
+				9EB2A0C71906B8D600D202E9 /* UIKit.framework */,
+				9EB2A0E21906B8D700D202E9 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9EB2A0C91906B8D600D202E9 /* CAPSPhotoViewTableViewExample */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A0FF1906B9C500D202E9 /* Custom Cell */,
+				9EB2A0F81906B8EE00D202E9 /* CAPSPhotoView */,
+				9EB2A0D21906B8D600D202E9 /* CAPSAppDelegate.h */,
+				9EB2A0D31906B8D600D202E9 /* CAPSAppDelegate.m */,
+				9EB2A0D51906B8D600D202E9 /* Main.storyboard */,
+				9EB2A0FC1906B96400D202E9 /* CAPSTableViewController.h */,
+				9EB2A0FD1906B96400D202E9 /* CAPSTableViewController.m */,
+				9EB2A0DB1906B8D600D202E9 /* Images.xcassets */,
+				9EB2A0CA1906B8D600D202E9 /* Supporting Files */,
+			);
+			path = CAPSPhotoViewTableViewExample;
+			sourceTree = "<group>";
+		};
+		9EB2A0CA1906B8D600D202E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A1051906BC1800D202E9 /* sign.jpg */,
+				9EB2A0CB1906B8D600D202E9 /* CAPSPhotoViewTableViewExample-Info.plist */,
+				9EB2A0CC1906B8D600D202E9 /* InfoPlist.strings */,
+				9EB2A0CF1906B8D600D202E9 /* main.m */,
+				9EB2A0D11906B8D600D202E9 /* CAPSPhotoViewTableViewExample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9EB2A0E81906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A0EE1906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests.m */,
+				9EB2A0E91906B8D700D202E9 /* Supporting Files */,
+			);
+			path = CAPSPhotoViewTableViewExampleTests;
+			sourceTree = "<group>";
+		};
+		9EB2A0E91906B8D700D202E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A0EA1906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests-Info.plist */,
+				9EB2A0EB1906B8D700D202E9 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9EB2A0F81906B8EE00D202E9 /* CAPSPhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A0F91906B90A00D202E9 /* CAPSPhotoView.h */,
+				9EB2A0FA1906B90A00D202E9 /* CAPSPhotoView.m */,
+			);
+			name = CAPSPhotoView;
+			sourceTree = "<group>";
+		};
+		9EB2A0FF1906B9C500D202E9 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9EB2A1001906B9DB00D202E9 /* CAPSTableViewCell.h */,
+				9EB2A1011906B9DB00D202E9 /* CAPSTableViewCell.m */,
+				9EB2A1021906B9DB00D202E9 /* CAPSTableViewCell.xib */,
+			);
+			name = "Custom Cell";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9EB2A0BF1906B8D600D202E9 /* CAPSPhotoViewTableViewExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9EB2A0F21906B8D700D202E9 /* Build configuration list for PBXNativeTarget "CAPSPhotoViewTableViewExample" */;
+			buildPhases = (
+				9EB2A0BC1906B8D600D202E9 /* Sources */,
+				9EB2A0BD1906B8D600D202E9 /* Frameworks */,
+				9EB2A0BE1906B8D600D202E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CAPSPhotoViewTableViewExample;
+			productName = CAPSPhotoViewTableViewExample;
+			productReference = 9EB2A0C01906B8D600D202E9 /* CAPSPhotoViewTableViewExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9EB2A0E01906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9EB2A0F51906B8D700D202E9 /* Build configuration list for PBXNativeTarget "CAPSPhotoViewTableViewExampleTests" */;
+			buildPhases = (
+				9EB2A0DD1906B8D700D202E9 /* Sources */,
+				9EB2A0DE1906B8D700D202E9 /* Frameworks */,
+				9EB2A0DF1906B8D700D202E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9EB2A0E71906B8D700D202E9 /* PBXTargetDependency */,
+			);
+			name = CAPSPhotoViewTableViewExampleTests;
+			productName = CAPSPhotoViewTableViewExampleTests;
+			productReference = 9EB2A0E11906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9EB2A0B81906B8D600D202E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CAPS;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = CAPS;
+				TargetAttributes = {
+					9EB2A0E01906B8D700D202E9 = {
+						TestTargetID = 9EB2A0BF1906B8D600D202E9;
+					};
+				};
+			};
+			buildConfigurationList = 9EB2A0BB1906B8D600D202E9 /* Build configuration list for PBXProject "CAPSPhotoViewTableViewExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9EB2A0B71906B8D600D202E9;
+			productRefGroup = 9EB2A0C11906B8D600D202E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9EB2A0BF1906B8D600D202E9 /* CAPSPhotoViewTableViewExample */,
+				9EB2A0E01906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9EB2A0BE1906B8D600D202E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A1041906B9DB00D202E9 /* CAPSTableViewCell.xib in Resources */,
+				9EB2A1061906BC1800D202E9 /* sign.jpg in Resources */,
+				9EB2A0DC1906B8D600D202E9 /* Images.xcassets in Resources */,
+				9EB2A0CE1906B8D600D202E9 /* InfoPlist.strings in Resources */,
+				9EB2A0D71906B8D600D202E9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EB2A0DF1906B8D700D202E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A0ED1906B8D700D202E9 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9EB2A0BC1906B8D600D202E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A1031906B9DB00D202E9 /* CAPSTableViewCell.m in Sources */,
+				9EB2A0D01906B8D600D202E9 /* main.m in Sources */,
+				9EB2A0FB1906B90A00D202E9 /* CAPSPhotoView.m in Sources */,
+				9EB2A0FE1906B96400D202E9 /* CAPSTableViewController.m in Sources */,
+				9EB2A0D41906B8D600D202E9 /* CAPSAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EB2A0DD1906B8D700D202E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EB2A0EF1906B8D700D202E9 /* CAPSPhotoViewTableViewExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9EB2A0E71906B8D700D202E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9EB2A0BF1906B8D600D202E9 /* CAPSPhotoViewTableViewExample */;
+			targetProxy = 9EB2A0E61906B8D700D202E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9EB2A0CC1906B8D600D202E9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9EB2A0CD1906B8D600D202E9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9EB2A0D51906B8D600D202E9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9EB2A0D61906B8D600D202E9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9EB2A0EB1906B8D700D202E9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9EB2A0EC1906B8D700D202E9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9EB2A0F01906B8D700D202E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9EB2A0F11906B8D700D202E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9EB2A0F31906B8D700D202E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CAPSPhotoViewTableViewExample/CAPSPhotoViewTableViewExample-Prefix.pch";
+				INFOPLIST_FILE = "CAPSPhotoViewTableViewExample/CAPSPhotoViewTableViewExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9EB2A0F41906B8D700D202E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CAPSPhotoViewTableViewExample/CAPSPhotoViewTableViewExample-Prefix.pch";
+				INFOPLIST_FILE = "CAPSPhotoViewTableViewExample/CAPSPhotoViewTableViewExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9EB2A0F61906B8D700D202E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CAPSPhotoViewTableViewExample.app/CAPSPhotoViewTableViewExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CAPSPhotoViewTableViewExample/CAPSPhotoViewTableViewExample-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CAPSPhotoViewTableViewExampleTests/CAPSPhotoViewTableViewExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9EB2A0F71906B8D700D202E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CAPSPhotoViewTableViewExample.app/CAPSPhotoViewTableViewExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CAPSPhotoViewTableViewExample/CAPSPhotoViewTableViewExample-Prefix.pch";
+				INFOPLIST_FILE = "CAPSPhotoViewTableViewExampleTests/CAPSPhotoViewTableViewExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9EB2A0BB1906B8D600D202E9 /* Build configuration list for PBXProject "CAPSPhotoViewTableViewExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EB2A0F01906B8D700D202E9 /* Debug */,
+				9EB2A0F11906B8D700D202E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9EB2A0F21906B8D700D202E9 /* Build configuration list for PBXNativeTarget "CAPSPhotoViewTableViewExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EB2A0F31906B8D700D202E9 /* Debug */,
+				9EB2A0F41906B8D700D202E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9EB2A0F51906B8D700D202E9 /* Build configuration list for PBXNativeTarget "CAPSPhotoViewTableViewExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EB2A0F61906B8D700D202E9 /* Debug */,
+				9EB2A0F71906B8D700D202E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9EB2A0B81906B8D600D202E9 /* Project object */;
+}
