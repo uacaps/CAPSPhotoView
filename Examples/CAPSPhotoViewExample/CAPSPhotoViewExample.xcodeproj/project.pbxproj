@@ -495,6 +495,7 @@
 				9EB2A05918FC582800D202E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9EB2A05A18FC582800D202E9 /* Build configuration list for PBXNativeTarget "CAPSPhotoViewExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +504,7 @@
 				9EB2A05C18FC582800D202E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

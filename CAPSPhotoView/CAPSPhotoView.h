@@ -71,12 +71,14 @@
     BOOL isModal;
 }
 
+@property float bounceRange;
+@property float doubleTapZoomScale;
+@property float maxZoomScale;
+@property float minZoomScale;
+
 - (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle;
 
 - (void)fadeInPhotoViewFromImageView:(UIImageView *)imgView;
-
 - (void)openPhotoViewAsModalWithImageView:(UIImageView *)imgView;
-
-@property float bounceRange;
 
 @end

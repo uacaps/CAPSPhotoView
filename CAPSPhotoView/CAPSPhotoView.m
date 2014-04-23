@@ -46,20 +46,26 @@
         // Initialization code
         self.frame = frame;
         
+        // Default settings
+        _bounceRange = 100;
+        _maxZoomScale = 4.0;
+        _minZoomScale = 1.0;
+        _doubleTapZoomScale = 2.0;
+        
+        // Initial setting
         hidden = YES;
         originalImageViewHidden = YES;
         
         // Set up UI
         [self buildUI];
         
+        // Set detail view labels
         [dateTitleLabel setText:dateTitle];
         [titleLabel setText:title];
         [subtitleLabel setText:subtitle];
         
+        // Set up touch recognizers
         [self buildGestureRecognizers];
-        
-        // Default settings
-        _bounceRange = 100;
     }
     
     return self;
@@ -161,36 +167,67 @@
     if (imageView.frame.size.width > deviceWidth) {
         [UIView animateWithDuration:0.3
                          animations:^{
-                             [imageScrollView setZoomScale:1.0 animated:YES];
+                             // Zoom scroll view to set scale
+                             [imageScrollView setZoomScale:_minZoomScale animated:YES];
                              
                              // Show detail view
                              photoDetailView.alpha = 1;
                          }];
         
-        closeBtn.enabled = YES;
-        [photoDetailView setUserInteractionEnabled:YES];
+        [self enableCloseButtonAndDetailView];
     } else {
         [UIView animateWithDuration:0.3
                          animations:^{
                              
-                             CGFloat verticalScale = deviceHeight / imageView.frame.size.height;
-                             CGFloat horizontalScale = deviceWidth / imageView.frame.size.width;
-                             
-                             // set scale to 2 if image already spans entire
-                             if (verticalScale <= 1.0 && horizontalScale <= 1.0) {
-                                 [imageScrollView setZoomScale:2.0 animated:YES];
-                             } else if (horizontalScale <= 1.0) {
-                                 [imageScrollView setZoomScale:verticalScale animated:YES];
-                             } else {
-                                 [imageScrollView setZoomScale:horizontalScale animated:YES];
-                             }
+                             // Zoom to tapped location
+                             CGPoint currentlocation = [recognizer locationInView:self];
+                             [self zoomToPoint:currentlocation withScale:_doubleTapZoomScale animated:YES forScrollView:imageScrollView];
                              
                              // Hide detail view
                              photoDetailView.alpha = 0;
                          }];
-        closeBtn.enabled = NO;
-        [photoDetailView setUserInteractionEnabled:NO];
+        
+        [self disableCloseButtonAndDetailView];
     }
+}
+
+- (void)zoomToPoint:(CGPoint)zoomPoint withScale:(CGFloat)scale animated:(BOOL)animated forScrollView:(UIScrollView *)scrollView
+{
+    // Normalize current content size back to content scale of 1.0f
+    CGSize contentSize;
+    contentSize.width = (scrollView.contentSize.width / scrollView.zoomScale);
+    contentSize.height = (scrollView.contentSize.height / scrollView.zoomScale);
+    
+    // Translate the zoom point to relative to the content rect
+    zoomPoint.x = (zoomPoint.x / scrollView.bounds.size.width) * contentSize.width;
+    zoomPoint.y = (zoomPoint.y / scrollView.bounds.size.height) * contentSize.height;
+    
+    // Derive the size of the region to zoom to
+    CGSize zoomSize;
+    zoomSize.width = scrollView.bounds.size.width / scale;
+    zoomSize.height = scrollView.bounds.size.height / scale;
+    
+    // Offset the zoom rect so the actual zoom point is in the middle of the rectangle
+    CGRect zoomRect;
+    zoomRect.origin.x = zoomPoint.x - zoomSize.width / 2.0f;
+    zoomRect.origin.y = zoomPoint.y - zoomSize.height / 2.0f;
+    zoomRect.size.width = zoomSize.width;
+    zoomRect.size.height = zoomSize.height;
+    
+    // Apply the resize
+    [scrollView zoomToRect:zoomRect animated:animated];
+}
+
+- (void)disableCloseButtonAndDetailView
+{
+    closeBtn.enabled = NO;
+    [photoDetailView setUserInteractionEnabled:NO];
+}
+
+- (void)enableCloseButtonAndDetailView
+{
+    closeBtn.enabled = YES;
+    [photoDetailView setUserInteractionEnabled:YES];
 }
 
 // Swipe photo up or down to close
@@ -222,10 +259,12 @@
             [UIView setAnimationDuration:0.2];
             [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:nil cache:YES];
             [UIView setAnimationBeginsFromCurrentState:YES];
-            /* Reset the frame view size*/
-            imageView.frame = CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height);//CGRectMake(0, 0, deviceWidth, deviceHeight);
+            
+            // Reset the frame view size
+            imageView.frame = CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height);
             [UIView setAnimationDelegate:self];
-            /*  Call bounce animation method */
+            
+            //  Call bounce animation method
             [UIView setAnimationDidStopSelector:@selector(bounceBackToOrigin)];
             [UIView commitAnimations];
         } else {
@@ -266,7 +305,6 @@
             }
             
             [self performSelector:@selector(removeSelfFromSuperview) withObject:nil afterDelay:0.4];
-//            [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.1];
         }
     }
 }
@@ -297,13 +335,12 @@
     if (imageView.frame.size.width > deviceWidth || (int)imageView.frame.size.height > deviceHeight) {
         [UIView animateWithDuration:0.3
                          animations:^{
-                             [imageScrollView setZoomScale:1.0 animated:YES];
+                             [imageScrollView setZoomScale:_minZoomScale animated:YES];
                              
                              photoDetailView.alpha = 1;
                          }];
         
-        closeBtn.enabled = YES;
-        [photoDetailView setUserInteractionEnabled:YES];
+        [self enableCloseButtonAndDetailView];
     } else {
         // Show or hide detail view
         if (photoDetailView.alpha == 0) {
@@ -311,17 +348,13 @@
                              animations:^{
                                  photoDetailView.alpha = 1;
                              }];
-            
-            closeBtn.enabled = YES;
-            [photoDetailView setUserInteractionEnabled:YES];
+            [self enableCloseButtonAndDetailView];
         } else {
             [UIView animateWithDuration:0.3
                              animations:^{
                                  photoDetailView.alpha = 0;
                              }];
-            
-            closeBtn.enabled = NO;
-            [photoDetailView setUserInteractionEnabled:NO];
+            [self disableCloseButtonAndDetailView];
         }
     }
 }
@@ -355,8 +388,7 @@
 
 - (void)tappedCloseButton
 {
-    closeBtn.enabled = NO;
-    [photoDetailView setUserInteractionEnabled:NO];
+    [self disableCloseButtonAndDetailView];
     
     if (isModal) {
         photoDetailView.alpha = 0;
@@ -434,8 +466,7 @@
     // Set isModal flag to NO
     isModal = NO;
     
-    closeBtn.enabled = YES;
-    [photoDetailView setUserInteractionEnabled:YES];
+    [self enableCloseButtonAndDetailView];
     
     // Use original image view to make effect of animation better by hiding it
     imgView.clipsToBounds = YES;
@@ -494,14 +525,9 @@
                          
                          [imageView setFrame:CGRectMake(photoViewImageOrigin.x, photoViewImageOrigin.y, photoViewImageSize.width, photoViewImageSize.height)];
                      }];
-
-    // Default max scale
-    maxScale = 4.0;
     
-    // Set up scroll view
-    imageScrollView.maximumZoomScale = maxScale;
+    // Set up scroll view content size
     imageScrollView.contentSize = imageView.frame.size;
-    imageScrollView.delegate = self;
     
     [self addGestureRecognizer:imageScrollView.pinchGestureRecognizer];
     
@@ -516,8 +542,7 @@
     // Set isModal flag to YES
     isModal = YES;
     
-    closeBtn.enabled = YES;
-    [photoDetailView setUserInteractionEnabled:YES];
+    [self enableCloseButtonAndDetailView];
     
     [dimView setAlpha:1];
     [photoDetailView setAlpha:1];
@@ -564,13 +589,9 @@
                          [self setFrame:oldFrame];
                      }];
     
-    // Default max scale
-    maxScale = 4.0;
-    
-    // Set up scroll view
-    imageScrollView.maximumZoomScale = maxScale;
+    // Set up scroll view content size
     imageScrollView.contentSize = imageView.frame.size;
-    imageScrollView.delegate = self;
+    
     
     [self addGestureRecognizer:imageScrollView.pinchGestureRecognizer];
     
@@ -599,6 +620,9 @@
     [imageScrollView setShowsHorizontalScrollIndicator:NO];
     [imageScrollView setShowsVerticalScrollIndicator:NO];
     [imageScrollView setScrollEnabled:YES];
+    imageScrollView.delegate = self;
+    imageScrollView.maximumZoomScale = _maxZoomScale;
+    imageScrollView.minimumZoomScale = _minZoomScale;
     imageScrollView.backgroundColor = [UIColor clearColor];
     [self addSubview:imageScrollView];
     
