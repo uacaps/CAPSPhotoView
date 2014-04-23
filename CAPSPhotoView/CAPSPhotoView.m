@@ -325,7 +325,7 @@
 
 - (BOOL)prefersStatusBarHidden
 {
-    return hidden;
+    return YES;
 }
 
 - (void)toggleStatusBar
@@ -341,9 +341,13 @@
     [photoDetailView setUserInteractionEnabled:NO];
     
     if (isModal) {
+        photoDetailView.alpha = 0;
+        
         [UIView animateWithDuration:0.3
                          animations:^{
-                             self.frame = CGRectMake(self.frame.origin.x, deviceHeight, self.frame.size.width, self.frame.size.height);
+                             dimView.alpha = 0;
+                             imageView.frame = CGRectMake(imageView.frame.origin.x, deviceHeight, imageView.frame.size.width, imageView.frame.size.height);
+//                             self.frame = CGRectMake(self.frame.origin.x, deviceHeight, self.frame.size.width, self.frame.size.height);
                          }];
     } else {
         photoDetailView.alpha = 0;
@@ -393,11 +397,10 @@
 
 - (void)setImageInfoFromImageView:(UIImageView *)imgView
 {
-    // Get parameters from start image view
+    // Translate image view origin to window
+    CGPoint origin = [imgView.superview convertPoint:imgView.frame.origin toView:nil];
     
-    // TODO: translate points to window
-    CGPoint origin = [imgView convertPoint:imgView.frame.origin toView:nil];
-    
+    // Set parameters from start image view
     photoOrigin = origin;
     photoSize = imgView.frame.size;
     startPhotoRadius = imgView.layer.cornerRadius;
@@ -422,7 +425,7 @@
     
     [self setImageInfoFromImageView:startImageView];
     
-    imageView.frame = startImageView.frame;
+    imageView.frame = CGRectMake(photoOrigin.x, photoOrigin.y, photoSize.width, photoSize.height);
     
     // Set up image view if necessary for radius
     if (startPhotoRadius > 0) {
@@ -434,8 +437,8 @@
     [dimView setAlpha:0];
     [photoDetailView setAlpha:0];
     
-    [[[[UIApplication sharedApplication] windows] lastObject] addSubview:self];
-    [[[[UIApplication sharedApplication] windows] lastObject] bringSubviewToFront:self];
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self];
+    [[[UIApplication sharedApplication] keyWindow] bringSubviewToFront:self];
     
     // Corner radius animation
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
@@ -506,12 +509,12 @@
     
     imageView.layer.cornerRadius = startPhotoRadius;
 
-    CGRect oldFrame = self.frame;
+    CGRect oldFrame = CGRectMake(0, 0, deviceWidth, deviceHeight);//self.frame;
     
     self.frame = CGRectMake(self.frame.origin.x, deviceHeight, self.frame.size.width, self.frame.size.height);
     
-    [[[[UIApplication sharedApplication] windows] lastObject] addSubview:self];
-    [[[[UIApplication sharedApplication] windows] lastObject] bringSubviewToFront:self];
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self];
+    [[[UIApplication sharedApplication] keyWindow] bringSubviewToFront:self];
     
     // Calculate height for image in photo view
     float scale = deviceWidth / startImageView.image.size.width;
