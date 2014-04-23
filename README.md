@@ -60,6 +60,10 @@ UIImageView *modalImageView = [[UIImageView alloc] initWithImage:[UIImage imageN
 [photoView openPhotoViewAsModalWithImageView:imageView];
 ```
 
+**Storyboard**
+
+In order for the status bar to show and hide properly you will need to add 'View controller-based status bar appearance' and set it to 'NO' in your plist.
+
 ## Future Work
 
 The following feature will be added in the future:
