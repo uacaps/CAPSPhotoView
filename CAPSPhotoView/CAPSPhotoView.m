@@ -361,7 +361,6 @@
                          animations:^{
                              dimView.alpha = 0;
                              imageView.frame = CGRectMake(imageView.frame.origin.x, deviceHeight, imageView.frame.size.width, imageView.frame.size.height);
-//                             self.frame = CGRectMake(self.frame.origin.x, deviceHeight, self.frame.size.width, self.frame.size.height);
                          }];
     } else {
         photoDetailView.alpha = 0;
