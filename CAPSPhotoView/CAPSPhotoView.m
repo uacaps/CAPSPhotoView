@@ -208,6 +208,8 @@
     float startImageViewY = 284.0;
     dimView.alpha = (rangeMax - ABS(startImageViewY - imageView.center.y)) / rangeMax;
     
+    [self showStatusBar];// TEST
+    
     // Close photo view or bounce back depending on how far picture got swiped up/down
     if(recognizer.state == UIGestureRecognizerStateEnded){
     
@@ -260,7 +262,7 @@
             }
             
             [self performSelector:@selector(removeSelfFromSuperview) withObject:nil afterDelay:0.4];
-            [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.1];
+//            [self performSelector:@selector(toggleStatusBar) withObject:nil afterDelay:0.1];
         }
     }
 }
@@ -281,6 +283,8 @@
                                     photoDetailView.alpha = 1;
                                     dimView.alpha = 1;
                                 }];
+    
+    [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:0.1]; // TEST
 }
 
 - (void)showHidePhotoDetailView
@@ -328,9 +332,19 @@
     return YES;
 }
 
+- (void)hideStatusBar
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+}
+
+- (void)showStatusBar
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+}
+
 - (void)toggleStatusBar
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:hidden];
+    [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationNone];
     
     hidden = !hidden;
 }
@@ -412,6 +426,8 @@
 // Start showing Photoview
 - (void)fadeInPhotoViewFromImageView:(UIImageView *)imgView
 {
+    hidden = YES;
+    
     // Set isModal flag to NO
     isModal = NO;
     
@@ -492,6 +508,8 @@
 
 - (void)openPhotoViewAsModalWithImageView:(UIImageView *)imgView
 {
+    hidden = YES;
+    
     // Set isModal flag to YES
     isModal = YES;
     
