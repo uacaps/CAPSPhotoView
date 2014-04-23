@@ -64,6 +64,28 @@ UIImageView *modalImageView = [[UIImageView alloc] initWithImage:[UIImage imageN
 
 In order for the status bar to show and hide properly you will need to add 'View controller-based status bar appearance' and set it to 'NO' in your plist.
 
+**User Customization**
+
+The distance that is needed swiping up/down in order for the photo view to close can be customized by setting 'bounce range. 
+
+```objective-c
+// Set bounce range
+photoView.bounceRange = 100;
+```
+
+The minimum, maximum, and double tap zoom scales can be set by setting 'minZoomScale', 'maxZoomScale', and 'doubleTapZoomScale'.
+
+```objective-c
+// Set minimum zoom scale
+photoView.minZoomScale = 1.0;
+
+// Set maximum zoom scale
+photoView.maxZoomScale = 4.0;
+
+// Set double tap zoom scale
+photoView.doubleTapZoomScale = 2.0;
+```
+
 ## Future Work
 
 The following feature will be added in the future:
