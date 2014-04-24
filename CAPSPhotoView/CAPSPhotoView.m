@@ -671,7 +671,7 @@
     detailLine.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:0.4];
     [photoDetailView addSubview:detailLine];
     
-    dateTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(211, 484, 99, 21)];
+    dateTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 484, 200, 21)];
     dateTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     dateTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13.0f];
     dateTitleLabel.backgroundColor = [UIColor clearColor];
