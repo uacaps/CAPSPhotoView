@@ -76,7 +76,7 @@
 @property float maxZoomScale;
 @property float minZoomScale;
 
-- (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle; // possibly remove
+- (id)initWithFrame:(CGRect)frame dateTitle:(NSString *)dateTitle title:(NSString *)title subtitle:(NSString *)subtitle;
 
 - (void)fadeInPhotoViewFromImageView:(UIImageView *)imgView;
 - (void)openPhotoViewAsModalWithImageView:(UIImageView *)imgView;
