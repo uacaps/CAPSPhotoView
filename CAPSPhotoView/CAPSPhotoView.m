@@ -249,7 +249,7 @@
     float startImageViewY = deviceHeight / 2;
     dimView.alpha = (rangeMax - ABS(startImageViewY - imageView.center.y)) / rangeMax;
     
-    [self showStatusBar];// TEST
+    [self showStatusBar];
     
     // Close photo view or bounce back depending on how far picture got swiped up/down
     if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -326,7 +326,7 @@
                                     dimView.alpha = 1;
                                 }];
     
-    [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:0.1]; // TEST
+    [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:0.1];
 }
 
 - (void)showHidePhotoDetailView
@@ -688,7 +688,7 @@
     [photoDetailView addSubview:titleLabel];
     
     subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 539, 300, 21)];
-    subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+    subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
     subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     subtitleLabel.backgroundColor = [UIColor clearColor];
     subtitleLabel.textColor = [UIColor whiteColor];

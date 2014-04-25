@@ -36,6 +36,11 @@
                                             subtitle:@"Subtitle"];
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+//    photoView.transform = CGAffineTransformMakeRotation(M_PI/2);
+}
+
 - (IBAction)openPhotoView:(id)sender
 {
     // Open/Fade in photo view from original image view
