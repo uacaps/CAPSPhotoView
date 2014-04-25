@@ -246,7 +246,7 @@
     
     // Fade on swipe up/down
     float rangeMax = 150.0;
-    float startImageViewY = 284.0;
+    float startImageViewY = deviceHeight / 2;
     dimView.alpha = (rangeMax - ABS(startImageViewY - imageView.center.y)) / rangeMax;
     
     [self showStatusBar];// TEST

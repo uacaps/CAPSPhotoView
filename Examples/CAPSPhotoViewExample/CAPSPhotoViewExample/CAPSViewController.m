@@ -20,12 +20,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // Set device height and width variables
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    float deviceWidth = screenRect.size.width;
+    float deviceHeight = screenRect.size.height;
+    
     // Image view with corner radius
     self.imageView2.layer.cornerRadius = self.imageView2.frame.size.height / 2;
     self.imageView2.clipsToBounds = YES;
     
     // Set up photo view
-    photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)
+    photoView = [[CAPSPhotoView alloc] initWithFrame:CGRectMake(0, 0, deviceWidth, deviceHeight)
                                            dateTitle:@"Date: 03/12/2014"
                                                title:@"Title"
                                             subtitle:@"Subtitle"];
